@@ -1,38 +1,420 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/*------------------------------*/
+/*Navbar Styling - START*/
+.navContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  background-color: #2f352c;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #363d32;
+  height: 50px;
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  z-index: 1030;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  /*To make navbar sticky*/
+  position: sticky;
+  top: 0;
+  /*To make navbar sticky*/
+}
+
+.navContainer #logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navContainer #logoContainer #logoImg {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.navContainer #logoContainer #heading {
+  font-family: "Lora", serif;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #fdf6e0;
+}
+
+.navContainer #logoContainer #heading:visited {
+  color: #fdf6e0;
+}
+
+.navList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #fdf6e0;
+}
+
+.navList > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.navList > li > a {
+  text-decoration: none;
+}
+
+.navList > li > a:visited {
+  color: #fdf6e0;
+}
+
+.navContainer #navRightContainer {
+  display: flex;
+  align-items: center;
+}
+
+.menuBtnContainer {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+#navToggle {
+  display: none;
+}
+
+.menuBtn,
+.menuBtn::before,
+.menuBtn::after {
+  display: block;
+  background-color: #fdf6e0;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menuBtn::before {
+  content: "";
+  margin-top: -8px;
+}
+
+.menuBtn::after {
+  content: "";
+  margin-top: 8px;
+}
+
+#navToggle:checked + .menuBtnContainer .menuBtn::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#navToggle:checked + .menuBtnContainer .menuBtn {
+  background: rgba(255, 255, 255, 0);
+}
+
+#navToggle:checked + .menuBtnContainer .menuBtn::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+/*Toggle Button - START*/
+.toggler {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.toggler p {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.togglerSlider {
+  width: 25px;
+  height: 13px;
+  background-color: #2b283a;
+  border-radius: 2rem;
+  margin-inline: 7px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  box-sizing: content-box;
+}
+
+nav.dark .togglerSlider {
+  border-color: white;
+  background-color: #f5f5f5;
+}
+
+.togglerSliderCircle {
+  height: 13px;
+  width: 13px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+nav.dark .togglerSliderCircle {
+  background-color: black;
+}
+
+.togglerLight {
+  color: #fdf6e0;
+}
+
+nav.dark .togglerLight {
+  color: #918e9b;
+}
+
+.togglerDark {
+  color: #918e9b;
+}
+
+nav.dark .togglerDark {
+  color: #fdf6e0;
+}
+
+nav.dark .toggler-dark {
+  color: #ffffff;
+}
+
+nav.dark .togglerSlider {
+  justify-content: flex-end;
+}
+/*Toggle Button - END*/
+
+@media (max-width: 1110px) {
+  .navContainer #logoContainer {
+    font-size: 15px;
+  }
+
+  .navContainer #logoContainer #logoImg {
+    width: 45px;
+    height: 45px;
+  }
+
+  .navContainer #logoContainer #heading {
+    font-size: 1.8em;
+  }
+
+  .menuBtnContainer {
+    display: flex;
+  }
+  .navList {
+    position: absolute;
+    top: 0;
+    margin-top: 80px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #navToggle ~ .navList li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #navToggle:checked ~ .navList li {
+    border: 1px solid #333;
+    height: 1.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .navList > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: #f7f8f2;
+    background-color: #222222;
+  }
+  .navList > li a:visited {
+    color: #f7f8f2;
+  }
+
+  .navList > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+  .navList #separator {
+    display: none;
+  }
+  .togglerLight {
+    color: #f7f8f2;
+  }
+
+  .navList #theme {
+    padding: 0;
+  }
+
+  #about .aboutContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/*Navbar Styling - END*/
+/*------------------------------*/
+/*Section styling - General - START*/
+.contentWrapper {
+  padding-top: calc(100vmax / 10);
+  padding-bottom: calc(10vmax / 10);
+  padding-left: 8vw;
+  padding-right: 8vw;
+  min-height: 80vh;
+  box-sizing: border-box;
+}
+
+.contentWrapper.dark {
+  background-color: #222222;
+}
+/*Section styling - General - END*/
+
+/*------------------------------*/
+/*Home Page Styling - START*/
+#home {
+  height: 450px;
+}
+
+.contentWrapper h1 {
+  line-height: 1.3144;
+  letter-spacing: 0em;
+  text-transform: none;
+  transform: scale(1) !important;
+  font-size: calc((4 - 1) * 1.2vh + 1.5rem);
+  color: #363d32;
+}
+
+#home.contentWrapper #introText {
+  font-family: "Lora", serif;
+  font-weight: 700;
+}
+
+#home.contentWrapper .typeTextAnimation {
+  font-family: "Montserrat", sans-serif;
+}
+
+.contentWrapper.dark h1 {
+  color: #fdf6e0;
+}
+
+#home .typeText {
+  height: 140px;
+}
+
+#home .homeAboutBtn {
+  background-color: #363d32;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 10px;
+  border: none;
   color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+/*Home Page Styling - END*/
+
+/*------------------------------*/
+/*About Page Styling - START*/
+#about {
+  background-color: #363d32;
+  color: #fdf6e0;
+  overflow: hidden;
+  margin: 0px;
+  min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+#about.contentWrapper h2 {
+  font-size: calc((4 - 1) * 1.2vh + 1.5rem);
+  margin-top: 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#about .aboutContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#about .aboutContainer .aboutTextContainer {
+  width: 60%;
+  float: left;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.3144;
+  font-weight: 200;
+  margin: 20px;
+  padding-right: 50px;
+}
+
+#about .aboutContainer .aboutTextContainer .aboutDetails {
+  text-align: justify;
+  font-weight: 200;
+}
+
+#about .aboutContainer .aboutTextContainer .aboutDetails a:visited {
+  color: #fdf6e0;
+}
+
+#about .aboutContainer .aboutImgContainer {
+  width: 30%;
+  float: right;
+}
+
+@media (max-width: 1110px) {
+  #about .aboutContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  #about .aboutContainer .aboutTextContainer {
+    margin: 0px 0px 10px 0px;
+    padding-right: 0px;
+    width: 80%;
+  }
+
+  #about .aboutContainer .aboutImgContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0;
   }
 }
+/*
+#about .aboutTextContainer .aboutDetails {
+  text-align: justify;
+  font-weight: 200;
+}
+
+#about .aboutTextContainer .aboutDetails h2 {
+  display: inline;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+#about .aboutTextContainer .aboutDetails a:visited {
+  color: #fdf6e0;
+}
+
+#about .aboutImgContainer {
+  overflow: hidden;
+  text-align: center;
+  margin: auto;
+}
+
+#about .aboutImgContainer .aboutImg {
+  margin: 20px auto;
+}*/
+/*About Page Styling - END*/
