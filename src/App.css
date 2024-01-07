@@ -50,7 +50,6 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  color: #fdf6e0;
 }
 
 .navList > li {
@@ -58,12 +57,11 @@
   overflow: hidden;
 }
 
-.navList > li > a {
-  text-decoration: none;
-}
-
-.navList > li > a:visited {
+.navLink,
+.navLink:link,
+.navLink:visited {
   color: #fdf6e0;
+  text-decoration: none;
 }
 
 .navContainer #navRightContainer {
