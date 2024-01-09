@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: space-between;
   background-color: #2f352c;
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #363d32;
   height: 50px;
   padding: 1em;
@@ -362,6 +361,8 @@ nav.dark .togglerSlider {
   font-weight: 200;
 }
 
+#about .aboutContainer .aboutTextContainer .aboutDetails a,
+#about .aboutContainer .aboutTextContainer .aboutDetails a:link,
 #about .aboutContainer .aboutTextContainer .aboutDetails a:visited {
   color: #fdf6e0;
 }
@@ -537,7 +538,14 @@ nav.dark .togglerSlider {
   font-size: 13px;
 }
 
-#projects.contentWrapper .projectContainer .projectRight p.projectTools {
+#projects.contentWrapper
+  .projectContainer
+  .projectRight.leftToRight
+  p.projectTools,
+#projects.contentWrapper
+  .projectContainer
+  .projectLeft.rightToLeft
+  p.projectTools {
   font-style: italic;
   font-size: 12px;
   font-weight: 500;
