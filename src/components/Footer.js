@@ -13,7 +13,7 @@ export default function Footer() {
           <i class="fa fa-linkedin"> </i>
         </a>
         <a
-          href="https://www.linkedin.com/in/karishma-hegde/"
+          href="https://github.com/karishmahegde"
           target="blank"
           class="sm-button"
           rel="noopener noreferrer"
