@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../images/logo.png";
+import Resume from "../Resume.pdf";
 
 export default function Navbar(props) {
   return (
@@ -30,23 +31,22 @@ export default function Navbar(props) {
             </a>
           </li>
           <li>
-            <a className="navLink" href="#about">
-              Experience
-            </a>
-          </li>
-          <li>
-            <a className="navLink" href="#about">
+            <a className="navLink" href="#projects">
               Projects
             </a>
           </li>
           <li>
-            <a className="navLink" href="#about">
-              Skillset
+            <a className="navLink" href="#skills">
+              Skills
             </a>
           </li>
           <li>
-            <a className="navLink" href="#about">
-              Contact
+            <a
+              className="navLink"
+              href={Resume}
+              download="Resume - Karishma Hegde"
+            >
+              Resume <i class="fa fa-download" />
             </a>
           </li>
           <li id="separator">|</li>

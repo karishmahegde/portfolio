@@ -34,7 +34,7 @@
 
 .navContainer #logoContainer #heading {
   font-family: "Lora", serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-decoration: none;
   color: #fdf6e0;
 }
@@ -57,9 +57,10 @@
   overflow: hidden;
 }
 
-.navLink,
-.navLink:link,
-.navLink:visited {
+.navList .navLink,
+.navList .navLink:link,
+.navList .navLink:visited,
+.navList #separator {
   color: #fdf6e0;
   text-decoration: none;
 }
@@ -265,7 +266,7 @@ nav.dark .togglerSlider {
 /*Section styling - General - START*/
 .contentWrapper {
   padding-top: calc(100vmax / 10);
-  padding-bottom: calc(10vmax / 10);
+  padding-bottom: calc(100vmax / 10);
   padding-left: 8vw;
   padding-right: 8vw;
   min-height: 80vh;
@@ -391,28 +392,262 @@ nav.dark .togglerSlider {
     margin: 50px 0;
   }
 }
-/*
-#about .aboutTextContainer .aboutDetails {
-  text-align: justify;
-  font-weight: 200;
+
+@media (max-width: 550px) {
+  #about .aboutContainer .aboutImgContainer .aboutImg {
+    width: 300px;
+  }
+}
+/*About Page Styling - END*/
+
+/*Skills Page Styling - START*/
+#skills.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #363d32;
 }
 
-#about .aboutTextContainer .aboutDetails h2 {
-  display: inline;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
+#skills.contentWrapper .skillsHeader {
+  font-family: "Lora", serif;
+  text-align: center;
 }
-#about .aboutTextContainer .aboutDetails a:visited {
+
+#skills.contentWrapper .skillsHeader h1 {
+  margin-bottom: 5px;
+  font-size: calc((4 - 1) * 1.2vh + 1.5rem);
   color: #fdf6e0;
 }
 
-#about .aboutImgContainer {
-  overflow: hidden;
-  text-align: center;
-  margin: auto;
+#skills.contentWrapper .skillsHeader p {
+  font-size: 20px;
+  font-weight: 200;
+  color: #fdf6e0;
 }
 
-#about .aboutImgContainer .aboutImg {
-  margin: 20px auto;
-}*/
-/*About Page Styling - END*/
+#skills.contentWrapper .skillsBody h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #fdf6e0;
+  width: 100%;
+}
+
+#skills.contentWrapper .skillsGrid {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+#skills.contentWrapper .skillsGrid .skillsGridItem {
+  padding: 8px;
+  text-align: center;
+}
+
+#skills.contentWrapper .skillsGrid .skillsGridItem .skillsGridItemImg {
+  width: 80px;
+}
+
+#skills.contentWrapper .skillsGrid .skillsGridItem .skillsGridItemText {
+  font-family: "Montserrat", sans-serif;
+  color: #fdf6e0;
+}
+
+#skills.contentWrapper .skillsGrid.languages {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#skills.contentWrapper .skillsGrid.frontendTools {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#skills.contentWrapper .skillsGrid.applications {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 550px) {
+  #skills.contentWrapper .skillsGrid .skillsGridItem .skillsGridItemImg {
+    width: 40px;
+  }
+  #skills.contentWrapper .skillsGrid .skillsGridItem .skillsGridItemText {
+    font-size: 12px;
+  }
+  #skills.contentWrapper .skillsBody h3 {
+    font-weight: 300;
+  }
+}
+/*Skills Page Styling - END*/
+
+/*Projects Page Styling - START*/
+#projects.contentWrapper h1 {
+  font-family: "Montserrat", sans-serif;
+}
+
+#projects.contentWrapper .projectContainer {
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#projects.contentWrapper .projectContainer .projectLeft.leftToRight {
+  width: 50%;
+  height: 600px;
+}
+
+#projects.contentWrapper .projectContainer .projectLeft.leftToRight img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+#projects.contentWrapper .projectContainer .projectRight.leftToRight {
+  width: 50%;
+  min-height: 200px;
+  background-color: #222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 8px;
+  color: white;
+  margin-left: -150px;
+  font-family: "Montserrat", sans-serif;
+}
+
+#projects.contentWrapper .projectContainer .projectRight h3 {
+  font-size: 30px;
+  font-weight: lighter;
+  color: #fdf6e0;
+}
+
+#projects.contentWrapper .projectContainer .projectRight p {
+  margin: 20px 0;
+  font-weight: 300;
+  line-height: 25px;
+  text-align: justify;
+  font-size: 13px;
+}
+
+#projects.contentWrapper .projectContainer .projectRight p.projectTools {
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#projects.contentWrapper .projectContainer .projectRight .projectBtn {
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  display: inline-block;
+  letter-spacing: 2px;
+  font-size: 10px;
+  border-radius: 5px;
+}
+
+#projects.contentWrapper.dark .projectContainer .projectRight.leftToRight,
+#projects.contentWrapper.dark .projectContainer .projectLeft.rightToLeft {
+  background-color: #363d32;
+}
+
+#projects.contentWrapper .projectContainer .projectRight.rightToLeft {
+  width: 50%;
+  height: 600px;
+  background-color: transparent;
+}
+
+#projects.contentWrapper .projectContainer .projectRight.rightToLeft img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+#projects.contentWrapper .projectContainer .projectLeft.rightToLeft {
+  width: 50%;
+  min-height: 200px;
+  background-color: #222222;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 8px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  transform: scale(1);
+  margin-right: -150px;
+}
+
+#projects.contentWrapper .projectContainer .projectLeft.rightToLeft h3 {
+  font-size: 30px;
+  font-weight: lighter;
+  color: #fdf6e0;
+}
+
+#projects.contentWrapper .projectContainer .projectLeft.rightToLeft p {
+  margin: 20px 0;
+  font-weight: 300;
+  line-height: 25px;
+  text-align: justify;
+  font-size: 13px;
+}
+
+#projects.contentWrapper
+  .projectContainer
+  .projectLeft.rightToLeft
+  .projectBtn {
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  display: inline-block;
+  letter-spacing: 2px;
+  font-size: 10px;
+  border-radius: 5px;
+}
+/*Projects Page Styling - END*/
+
+/*Footer - START*/
+#footer {
+  text-align: center;
+  padding: 20px;
+  display: block;
+  background-color: #222222;
+  font-family: "Montserrat", sans-serif;
+}
+
+#footer p {
+  margin: 10px auto;
+  font-weight: lighter;
+  color: #fdf6e0;
+}
+
+#footer .social-icons .fa {
+  color: #fdf6e0;
+}
+
+#footer .social-icons {
+  display: flex;
+  justify-content: center;
+  color: #5a5a5a;
+  margin: 0 auto;
+}
+
+#footer .sm-button {
+  margin: 0px 10px 0px;
+  border: 1px solid #bababa;
+  border-radius: 100%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sm-button:hover {
+  background: #6e7954;
+  text-decoration: none;
+}
+/*Footer - END*/
