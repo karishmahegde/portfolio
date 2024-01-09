@@ -680,6 +680,12 @@ nav.dark .togglerSlider {
   margin: 0 auto;
 }
 
+#footer .social-icons a,
+#footer .social-icons a:link,
+#footer .social-icons a:visited {
+  text-decoration: none;
+}
+
 #footer .sm-button {
   margin: 0px 10px 0px;
   border: 1px solid #bababa;
