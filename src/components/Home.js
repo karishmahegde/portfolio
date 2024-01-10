@@ -25,7 +25,7 @@ export default function Home(props) {
       </h1>
       <a href="#about">
         <button className="homeAboutBtn" type="button">
-          about me ✨
+          ABOUT ME ✨
         </button>
       </a>
     </div>

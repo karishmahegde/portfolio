@@ -56,11 +56,11 @@ export default function Experience(props) {
             <div className="projectLeft rightToLeft">
               <h3>My Staff Room</h3>
               <p>
-                My StaffRoom Mobile Application is an Android Application that
-                is built to facilitate the faculty of an institution to
-                communicate with each other through a messaging interface.
-                Teachers or Professors can send each other text messages, media,
-                and documents of different formats such as PDFs, Docx, etc.
+                The StaffRoom Mobile Application, designed for Android,
+                facilitates seamless communication among faculty members within
+                an institution. Teachers and professors can exchange text
+                messages, media, and various document formats, including PDFs
+                and docx.
               </p>
               <p className="projectTools">
                 Tools 🔧: Android Studio (Frontend Mobile Application), Google

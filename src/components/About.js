@@ -16,7 +16,7 @@ export default function About(props) {
               Management, Data Science and more.
             </p>
             <p>
-              Prior to my academic persuit, I was contributing my expertise at
+              Prior to my academic pursuit, I was contributing my expertise at
               <b> IBM</b> as an <b>Application Developer</b> for over two years.
               In a typical day, I delved into coding intricate business logic,
               specializing in the generation of complex contract reports and
@@ -47,7 +47,7 @@ export default function About(props) {
             </p>
             <p>
               I am deeply passionate about advancing my career as a{" "}
-              <b>full stack or front-end develoepr</b> As an engineer, my
+              <b>full stack or front-end develoepr.</b> As an engineer, my
               aspiration is to craft technology solutions that address
               contemporary challenges, driven by a blend of creativity,
               responsibility, and unwavering dedication to my organization.
