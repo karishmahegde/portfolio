@@ -47,7 +47,7 @@ export default function About(props) {
             </p>
             <p>
               I am deeply passionate about advancing my career as a{" "}
-              <b>full stack or front-end develoepr.</b> As an engineer, my
+              <b>full stack or front-end developer.</b> As an engineer, my
               aspiration is to craft technology solutions that address
               contemporary challenges, driven by a blend of creativity,
               responsibility, and unwavering dedication to my organization.
