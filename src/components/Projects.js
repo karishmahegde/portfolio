@@ -2,6 +2,7 @@ import React from "react";
 import { Slide } from "react-awesome-reveal";
 import Project1 from "../images/project1.jpg";
 import Project2 from "../images/project2.png";
+import Project3 from "../images/project3.png";
 
 export default function Experience(props) {
   return (
@@ -14,9 +15,47 @@ export default function Experience(props) {
         <section>
           <div className="projectContainer">
             <div className="projectLeft leftToRight">
-              <img src={Project1} alt="Electric Bicycles"></img>
+              <img src={Project3} alt="Electric Bicycles"></img>
             </div>
             <div className="projectRight leftToRight">
+              <div className="content">
+                <h3>Traceroute Statistics</h3>
+                <p>
+                  This project creates a command line tool that automatically
+                  executes traceroute multiple times towards a target domain
+                  name or IP address specified as command line parameter. Based
+                  on multiple traceroute executions, the program will derive
+                  latency statistics for each hop between the traceroute client
+                  and the target machine. To allow for repeatable tests, the
+                  program also allows reading pre-generated traceroute output
+                  traces stored on multiple text files (one text output trace
+                  per file). Based on this pre-generated output, the program can
+                  compute the latency statistics as for the case of live
+                  traceroute execution.
+                </p>
+                <p className="projectTools">
+                  Tools 🔧: Python 3.11.5 | Visual Studio Code v1.86
+                </p>
+                <a
+                  href="https://github.com/karishmahegde/Traceroute-Statistics"
+                  className="projectBtn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Know More
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Slide>
+      <Slide duration={2000} direction="right">
+        <section>
+          <div className="projectContainer">
+            <div className="projectLeft rightToLeft">
+              <img src={Project1} alt="Electric Bicycles"></img>
+            </div>
+            <div className="projectRight rightToLeft">
               <div className="content">
                 <h3>
                   Building Sustainable Transportation Solutions for Large
@@ -53,7 +92,7 @@ export default function Experience(props) {
       <Slide duration={2000} direction="right">
         <section>
           <div className="projectContainer">
-            <div className="projectLeft rightToLeft">
+            <div className="projectLeft leftToRight">
               <h3>My Staff Room</h3>
               <p>
                 The StaffRoom Mobile Application, designed for Android,
@@ -75,7 +114,7 @@ export default function Experience(props) {
                 Know More
               </a>
             </div>
-            <div className="projectRight rightToLeft">
+            <div className="projectRight leftToRight">
               <div className="content">
                 <img src={Project2} alt="Electric Bicycles"></img>
               </div>
