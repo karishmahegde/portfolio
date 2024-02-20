@@ -72,7 +72,7 @@ export default function Experience(props) {
                 </p>
                 <p className="projectDomain">
                   Domain: Mobile Application Development | Full-Stack
-                  Development Development
+                  Development
                 </p>
                 <p className="projectTools">
                   Tools 🔧: Android Studio (Frontend Mobile Application) |
