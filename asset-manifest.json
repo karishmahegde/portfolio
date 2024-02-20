@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.353cb31f.css",
-    "main.js": "/portfolio/static/js/main.8b1a886e.js",
+    "main.js": "/portfolio/static/js/main.26a787ea.js",
     "static/js/787.7da95b79.chunk.js": "/portfolio/static/js/787.7da95b79.chunk.js",
     "static/media/aboutPhoto.png": "/portfolio/static/media/aboutPhoto.efb23e6f2466e00e0be5.png",
     "static/media/project2.png": "/portfolio/static/media/project2.fcd39b7fa5af872929ad.png",
@@ -14,17 +14,18 @@
     "static/media/logo.png": "/portfolio/static/media/logo.91b9d289703fc9a45094.png",
     "static/media/css.png": "/portfolio/static/media/css.015d4e7819fe71e19c25.png",
     "static/media/java.png": "/portfolio/static/media/java.fdabd4e11f1235e4e8e0.png",
+    "static/media/project3.jpg": "/portfolio/static/media/project3.ea1cb49d00b9759a9655.jpg",
     "static/media/javascript.png": "/portfolio/static/media/javascript.83f816a137ee2ef5f733.png",
     "static/media/c++.png": "/portfolio/static/media/c++.24a8f93854ab092f17a7.png",
     "static/media/oracleCPQ.png": "/portfolio/static/media/oracleCPQ.5ea09454f232b7ced541.png",
     "static/media/Firebase.svg": "/portfolio/static/media/Firebase.e6583a29712875c8977afcba1d0b6883.svg",
     "index.html": "/portfolio/index.html",
     "main.353cb31f.css.map": "/portfolio/static/css/main.353cb31f.css.map",
-    "main.8b1a886e.js.map": "/portfolio/static/js/main.8b1a886e.js.map",
+    "main.26a787ea.js.map": "/portfolio/static/js/main.26a787ea.js.map",
     "787.7da95b79.chunk.js.map": "/portfolio/static/js/787.7da95b79.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.353cb31f.css",
-    "static/js/main.8b1a886e.js"
+    "static/js/main.26a787ea.js"
   ]
 }
