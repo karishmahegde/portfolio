@@ -33,6 +33,9 @@ export default function Experience(props) {
                   compute the latency statistics as for the case of live
                   traceroute execution.
                 </p>
+                <p className="projectDomain">
+                  Domain: Computer Networks | Data Analysis
+                </p>
                 <p className="projectTools">
                   Tools 🔧: Python 3.11.5 | Visual Studio Code v1.86
                 </p>
@@ -53,9 +56,6 @@ export default function Experience(props) {
         <section>
           <div className="projectContainer">
             <div className="projectLeft rightToLeft">
-              <img src={Project1} alt="Electric Bicycles"></img>
-            </div>
-            <div className="projectRight rightToLeft">
               <div className="content">
                 <h3>
                   Building Sustainable Transportation Solutions for Large
@@ -69,6 +69,10 @@ export default function Experience(props) {
                   system. Users book two-wheelers through an Android app, while
                   admins manage assets and track usage through a backend
                   database and mobile app.
+                </p>
+                <p className="projectDomain">
+                  Domain: Mobile Application Development | Full Stack
+                  Development
                 </p>
                 <p className="projectTools">
                   Tools 🔧: Android Studio (Frontend Mobile Application) |
@@ -86,37 +90,43 @@ export default function Experience(props) {
                 </a>
               </div>
             </div>
+            <div className="projectRight rightToLeft">
+              <img src={Project1} alt="Electric Bicycles"></img>
+            </div>
           </div>
         </section>
       </Slide>
-      <Slide duration={2000} direction="right">
+      <Slide duration={2000} direction="left">
         <section>
           <div className="projectContainer">
             <div className="projectLeft leftToRight">
-              <h3>My Staff Room</h3>
-              <p>
-                The StaffRoom Mobile Application, designed for Android,
-                facilitates seamless communication among faculty members within
-                an institution. Teachers and professors can exchange text
-                messages, media, and various document formats, including PDFs
-                and docx.
-              </p>
-              <p className="projectTools">
-                Tools 🔧: Android Studio (Frontend Mobile Application), Google
-                Firebase (User authentication and database)
-              </p>
-              <a
-                href="https://github.com/karishmahegde/MyStaffRoom_Mobile_Application"
-                className="projectBtn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Know More
-              </a>
+              <img src={Project2} alt="Electric Bicycles"></img>
             </div>
             <div className="projectRight leftToRight">
               <div className="content">
-                <img src={Project2} alt="Electric Bicycles"></img>
+                <h3>My Staff Room</h3>
+                <p>
+                  The StaffRoom Mobile Application, designed for Android,
+                  facilitates seamless communication among faculty members
+                  within an institution. Teachers and professors can exchange
+                  text messages, media, and various document formats, including
+                  PDFs and docx.
+                </p>
+                <p className="projectDomain">
+                  Domain: Mobile Application Development
+                </p>
+                <p className="projectTools">
+                  Tools 🔧: Android Studio (Frontend Mobile Application), Google
+                  Firebase (User authentication and database)
+                </p>
+                <a
+                  href="https://github.com/karishmahegde/MyStaffRoom_Mobile_Application"
+                  className="projectBtn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Know More
+                </a>
               </div>
             </div>
           </div>
