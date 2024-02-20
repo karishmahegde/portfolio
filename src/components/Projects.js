@@ -2,7 +2,7 @@ import React from "react";
 import { Slide } from "react-awesome-reveal";
 import Project1 from "../images/project1.jpg";
 import Project2 from "../images/project2.png";
-import Project3 from "../images/project3.png";
+import Project3 from "../images/project3.jpg";
 
 export default function Experience(props) {
   return (
