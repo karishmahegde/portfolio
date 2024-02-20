@@ -551,6 +551,19 @@ nav.dark .togglerSlider {
   .projectContainer
   .projectLeft.rightToLeft
   p.projectTools {
+  margin: 0 auto;
+  color: #fdf6e0;
+  font-weight: 500;
+}
+
+#projects.contentWrapper
+  .projectContainer
+  .projectRight.leftToRight
+  p.projectDomain,
+#projects.contentWrapper
+  .projectContainer
+  .projectLeft.rightToLeft
+  p.projectDomain {
   font-style: italic;
   font-size: 12px;
   font-weight: 500;

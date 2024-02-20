@@ -71,8 +71,8 @@ export default function Experience(props) {
                   database and mobile app.
                 </p>
                 <p className="projectDomain">
-                  Domain: Mobile Application Development | Full Stack
-                  Development
+                  Domain: Mobile Application Development | Full-Stack
+                  Development Development
                 </p>
                 <p className="projectTools">
                   Tools 🔧: Android Studio (Frontend Mobile Application) |
