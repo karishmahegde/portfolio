@@ -25,7 +25,7 @@ export default function Footer() {
       <div>
         <p>
           &copy; Copyright <span>{new Date().getFullYear()}</span> Karishma
-          Hegde
+          Hegde | Designed using React JS
         </p>
       </div>
     </footer>
