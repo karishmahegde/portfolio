@@ -3,6 +3,7 @@ import { Slide } from "react-awesome-reveal";
 import Project1 from "../images/project1.jpg";
 import Project2 from "../images/project2.png";
 import Project3 from "../images/project3.jpg";
+import Project4 from "../images/project4.png";
 
 export default function Experience(props) {
   return (
@@ -11,6 +12,51 @@ export default function Experience(props) {
       className={`contentWrapper ${props.darkMode ? "dark" : ""}`}
     >
       <h1>My Projects</h1>
+      <Slide duration={2000} direction="right">
+        <section>
+          <div className="projectContainer">
+            <div className="projectLeft rightToLeft">
+              <div className="content">
+                <h3>Tenzies - The Game</h3>
+                <p>
+                  This project involves the devleopment of a game using React
+                  JS.In the project's development, key React concepts were
+                  mastered. This included creating Custom Components, managing
+                  Parent-Child relationships, utilizing Props efficiently, and
+                  implementing Conditional Rendering. State management with
+                  React.useState() and handling Side Effects with
+                  React.useEffect() ensured functionality, while LocalStorage
+                  provided data persistence. Exploring React Libraries further
+                  enriched the toolkit for dynamic application development.
+                </p>
+                <p className="projectDomain">
+                  Domain: Web Application Development
+                </p>
+                <p className="projectTools">Tools 🔧: React JS</p>
+                <a
+                  href="https://karishmahegde.github.io/tenziesGame/"
+                  className="projectBtn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Play Now!
+                </a>
+                <a
+                  href="https://github.com/karishmahegde/tenziesGame"
+                  className="projectBtn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Know More
+                </a>
+              </div>
+            </div>
+            <div className="projectRight rightToLeft">
+              <img src={Project4} alt="Tenzies"></img>
+            </div>
+          </div>
+        </section>
+      </Slide>
       <Slide duration={2000} direction="left">
         <section>
           <div className="projectContainer">
