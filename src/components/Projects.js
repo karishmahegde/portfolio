@@ -52,7 +52,7 @@ export default function Experience(props) {
               </div>
             </div>
             <div className="projectRight rightToLeft">
-              <img src={Project4} alt="Tenzies"></img>
+              <img src={Project4} alt="Tenzies Game"></img>
             </div>
           </div>
         </section>
