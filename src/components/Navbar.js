@@ -31,6 +31,11 @@ export default function Navbar(props) {
             </a>
           </li>
           <li>
+            <a className="navLink" href="#experience">
+              Experience
+            </a>
+          </li>
+          <li>
             <a className="navLink" href="#projects">
               Projects
             </a>
