@@ -1,32 +1,32 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.f2493c8f.css",
-    "main.js": "/portfolio/static/js/main.3e54264e.js",
+    "main.css": "/portfolio/static/css/main.ad563b05.css",
+    "main.js": "/portfolio/static/js/main.c5746e99.js",
     "static/js/787.7da95b79.chunk.js": "/portfolio/static/js/787.7da95b79.chunk.js",
-    "static/media/aboutPhoto.png": "/portfolio/static/media/aboutPhoto.efb23e6f2466e00e0be5.png",
     "static/media/project2.png": "/portfolio/static/media/project2.fcd39b7fa5af872929ad.png",
     "static/media/RLanguage.png": "/portfolio/static/media/RLanguage.a05f0d1389387a91a676.png",
     "static/media/project1.jpg": "/portfolio/static/media/project1.e984b9a16144da92b364.jpg",
+    "static/media/logo.png": "/portfolio/static/media/logo.0db9933f3df439d6d407.png",
     "static/media/react.png": "/portfolio/static/media/react.8a6fc0a24a800d1e0f4a.png",
     "static/media/python.png": "/portfolio/static/media/python.82efb64f8698a267f8bf.png",
     "static/media/project4.png": "/portfolio/static/media/project4.f8a7f184ae8b4bd0b083.png",
-    "static/media/Resume.pdf": "/portfolio/static/media/Resume.f596168c925dd2da0d12.pdf",
+    "static/media/Resume.pdf": "/portfolio/static/media/Resume.552c4d8dff48c6e8fe06.pdf",
     "static/media/androidStudio.png": "/portfolio/static/media/androidStudio.1e1e2016202afff22cc8.png",
     "static/media/project3.jpg": "/portfolio/static/media/project3.889bb0ed87596d4165f1.jpg",
-    "static/media/logo.png": "/portfolio/static/media/logo.91b9d289703fc9a45094.png",
     "static/media/css.png": "/portfolio/static/media/css.015d4e7819fe71e19c25.png",
     "static/media/java.png": "/portfolio/static/media/java.fdabd4e11f1235e4e8e0.png",
     "static/media/javascript.png": "/portfolio/static/media/javascript.83f816a137ee2ef5f733.png",
+    "static/media/aboutAvatar.png": "/portfolio/static/media/aboutAvatar.e47c460126cda1fbc685.png",
     "static/media/c++.png": "/portfolio/static/media/c++.24a8f93854ab092f17a7.png",
     "static/media/oracleCPQ.png": "/portfolio/static/media/oracleCPQ.5ea09454f232b7ced541.png",
     "static/media/Firebase.svg": "/portfolio/static/media/Firebase.e6583a29712875c8977afcba1d0b6883.svg",
     "index.html": "/portfolio/index.html",
-    "main.f2493c8f.css.map": "/portfolio/static/css/main.f2493c8f.css.map",
-    "main.3e54264e.js.map": "/portfolio/static/js/main.3e54264e.js.map",
+    "main.ad563b05.css.map": "/portfolio/static/css/main.ad563b05.css.map",
+    "main.c5746e99.js.map": "/portfolio/static/js/main.c5746e99.js.map",
     "787.7da95b79.chunk.js.map": "/portfolio/static/js/787.7da95b79.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2493c8f.css",
-    "static/js/main.3e54264e.js"
+    "static/css/main.ad563b05.css",
+    "static/js/main.c5746e99.js"
   ]
 }
