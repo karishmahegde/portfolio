@@ -1,24 +1,27 @@
 import React from "react";
 
-export default function Footer() {
+export default function Footer(props) {
   return (
-    <footer id="footer" class="sticky-bottom navbar">
-      <div class="social-icons">
+    <footer
+      id="footer"
+      className={`sticky-bottom navbar ${props.darkMode ? "dark" : ""}`}
+    >
+      <div className="social-icons">
         <a
           href="https://www.linkedin.com/in/karishma-hegde/"
           target="blank"
-          class="sm-button"
+          className="sm-button"
           rel="noopener noreferrer"
         >
-          <i class="fa fa-linkedin"> </i>
+          <i className="fa fa-linkedin"> </i>
         </a>
         <a
           href="https://github.com/karishmahegde"
           target="blank"
-          class="sm-button"
+          className="sm-button"
           rel="noopener noreferrer"
         >
-          <i class="fa fa-github"></i>
+          <i className="fa fa-github"></i>
         </a>
         <br />
       </div>

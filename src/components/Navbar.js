@@ -42,6 +42,7 @@ export default function Navbar(props) {
           </li>
           <li>
             <a
+              id="resumeNav"
               className="navLink"
               href={Resume}
               download="Resume - Karishma Hegde"

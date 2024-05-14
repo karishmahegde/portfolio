@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar.js";
 import Home from "./components/Home.js";
 import About from "./components/About.js";
+import Experience from "./components/Experience.js";
 import Projects from "./components/Projects.js";
 import Skills from "./Skills.js";
 import Footer from "./components/Footer.js";
@@ -18,6 +19,7 @@ export default function App() {
       <Navbar darkMode={darkMode} toggleDarkMode={toggleSwitch} />
       <Home darkMode={darkMode} />
       <About darkMode={darkMode} />
+      <Experience darkMode={darkMode} />
       <Projects darkMode={darkMode} />
       <Skills darkMode={darkMode} />
       <Footer darkMode={darkMode} />
