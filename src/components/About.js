@@ -13,7 +13,7 @@ export default function About(props) {
               a master's student at the <b>University of Georgia, USA</b> in the
               <b> MS Computer Science</b> Program. My coursework revolves around
               core Computer Science domains such as Algorithms, Database
-              Management, Data Science and more.
+              Management, Human-Computer Interaction and more.
             </p>
             <p>
               Prior to my academic pursuit, I was contributing my expertise at
