@@ -2,7 +2,7 @@ import React from "react";
 import { Slide } from "react-awesome-reveal";
 import Project1 from "../images/project1.jpg";
 import Project2 from "../images/project2.png";
-import Project3 from "../images/project3.jpg";
+import Project3 from "../images/project3.png";
 import Project4 from "../images/project4.png";
 
 export default function Experience(props) {
@@ -16,6 +16,68 @@ export default function Experience(props) {
         <section>
           <div className="projectContainer">
             <div className="projectLeft rightToLeft">
+              <div className="content">
+                <h3>
+                  CollabPal - Collaborative Tools for Group Projects on EdTech
+                  Platforms
+                </h3>
+                <p>
+                  As part of the Human Computer Interaction course in my
+                  Master's program, this project involves extensive user
+                  research leading to a high-fidelity protoype for the lack of
+                  user-friendly tools to assist group assignments and projects
+                  on edTech platforms.
+                  <ul>
+                    <li>
+                      Developed a smart platform that suggests appropriate tools
+                      based on the project and course.
+                    </li>
+                    <li>
+                      Integrated a calendar feature that tracks group members'
+                      schedules and suggests feasible meeting times.
+                    </li>
+                  </ul>
+                </p>
+                <p className="projectDomain">
+                  Domain: User Experience Design | User Research | Design
+                  Principles
+                </p>
+                <p className="projectTools">
+                  <p className="projectTools">
+                    Tools 🔧: Figma | SurveyMonkey | Google Suite
+                  </p>
+                </p>
+                <a
+                  href="https://www.figma.com/proto/z47m6gue0e62IFhRn4wLra/Squad-HCI%253A-Milestone-5---Prototyping?node-id=2004-89&t=V2vu4vNNXo4JNEV6-1&scaling=scale-down&page-id=2004%3A88&starting-point-node-id=2004%3A89"
+                  className="projectBtn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Hi-fi Prototype
+                </a>
+                <a
+                  href="https://drive.google.com/drive/folders/13e_QfbkE4GEzDNHKMx-VFdswuR6kuGdl?usp=sharing"
+                  className="projectBtn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Know More
+                </a>
+              </div>
+            </div>
+            <div className="projectRight rightToLeft">
+              <img src={Project3} alt="Tenzies Game"></img>
+            </div>
+          </div>
+        </section>
+      </Slide>
+      <Slide duration={2000} direction="left">
+        <section>
+          <div className="projectContainer">
+            <div className="projectLeft leftToRight">
+              <img src={Project4} alt="Tenzies Game"></img>
+            </div>
+            <div className="projectRight leftToRight">
               <div className="content">
                 <h3>Tenzies - The Game</h3>
                 <p>
@@ -38,7 +100,9 @@ export default function Experience(props) {
                 <p className="projectDomain">
                   Domain: Web Application Development
                 </p>
-                <p className="projectTools">Tools 🔧: React JS</p>
+                <p className="projectTools">
+                  <p className="projectTools">Tools 🔧: React JS</p>
+                </p>
                 <a
                   href="https://karishmahegde.github.io/tenziesGame/"
                   className="projectBtn"
@@ -49,50 +113,6 @@ export default function Experience(props) {
                 </a>
                 <a
                   href="https://github.com/karishmahegde/tenziesGame"
-                  className="projectBtn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Know More
-                </a>
-              </div>
-            </div>
-            <div className="projectRight rightToLeft">
-              <img src={Project4} alt="Tenzies Game"></img>
-            </div>
-          </div>
-        </section>
-      </Slide>
-      <Slide duration={2000} direction="left">
-        <section>
-          <div className="projectContainer">
-            <div className="projectLeft leftToRight">
-              <img src={Project3} alt="Electric Bicycles"></img>
-            </div>
-            <div className="projectRight leftToRight">
-              <div className="content">
-                <h3>Traceroute Statistics</h3>
-                <p>
-                  This project creates a command line tool that automatically
-                  executes traceroute multiple times towards a target domain
-                  name or IP address specified as command line parameter. Based
-                  on multiple traceroute executions, the program will derive
-                  latency statistics for each hop between the traceroute client
-                  and the target machine. To allow for repeatable tests, the
-                  program also allows reading pre-generated traceroute output
-                  traces stored on multiple text files (one text output trace
-                  per file). Based on this pre-generated output, the program can
-                  compute the latency statistics as for the case of live
-                  traceroute execution.
-                </p>
-                <p className="projectDomain">
-                  Domain: Computer Networks | Data Analysis
-                </p>
-                <p className="projectTools">
-                  Tools 🔧: Python 3.11.5 | Visual Studio Code v1.86
-                </p>
-                <a
-                  href="https://github.com/karishmahegde/Traceroute-Statistics"
                   className="projectBtn"
                   target="_blank"
                   rel="noopener noreferrer"
