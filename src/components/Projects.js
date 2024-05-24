@@ -19,15 +19,21 @@ export default function Experience(props) {
               <div className="content">
                 <h3>Tenzies - The Game</h3>
                 <p>
-                  This project involves the devleopment of a game using React
-                  JS.In the project's development, key React concepts were
-                  mastered. This included creating Custom Components, managing
-                  Parent-Child relationships, utilizing Props efficiently, and
-                  implementing Conditional Rendering. State management with
-                  React.useState() and handling Side Effects with
-                  React.useEffect() ensured functionality, while LocalStorage
-                  provided data persistence. Exploring React Libraries further
-                  enriched the toolkit for dynamic application development.
+                  This project involves the development of a game using key
+                  concepts of React JS, including
+                  <ul>
+                    <li>
+                      Management of Custom Components & Parent-Child
+                      relationships
+                    </li>
+                    <li>Utilization of Props efficiently</li>
+                    <li>Implementation of Conditional Rendering</li>
+                    <li>
+                      State management with React.useState() and handling Side
+                      Effects with React.useEffect()
+                    </li>
+                    <li>LocalStorage for data persistence.</li>
+                  </ul>
                 </p>
                 <p className="projectDomain">
                   Domain: Web Application Development
