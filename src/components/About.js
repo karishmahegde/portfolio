@@ -32,10 +32,8 @@ export default function About(props) {
             <br />
             <p>
               When I'm not channeling my efforts into improving technology, I
-              find solace in the world of painting 🎨, immersing myself in the
-              creative flow. I work with both traditional mediums like gouache
-              and acrylic paints as well as digital art with software such as
-              Procreate. My
+              find solace in the world of painting and digital art 🎨, immersing
+              myself in the creative flow. My
               <b>
                 {" "}
                 Instagram page{" "}
