@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.7445c26e.css",
-    "main.js": "/portfolio/static/js/main.5701b18c.js",
+    "main.js": "/portfolio/static/js/main.4035b2c4.js",
     "static/js/787.7da95b79.chunk.js": "/portfolio/static/js/787.7da95b79.chunk.js",
     "static/media/profile.png": "/portfolio/static/media/profile.a13b8eec60b2022ac32b.png",
     "static/media/project2.png": "/portfolio/static/media/project2.fcd39b7fa5af872929ad.png",
@@ -15,7 +15,7 @@
     "static/media/androidStudio.png": "/portfolio/static/media/androidStudio.1e1e2016202afff22cc8.png",
     "static/media/sqlIcon.png": "/portfolio/static/media/sqlIcon.4fe76d0c8c2cd39a2766.png",
     "static/media/java.png": "/portfolio/static/media/java.fdabd4e11f1235e4e8e0.png",
-    "static/media/tailwind.png": "/portfolio/static/media/tailwind.479d7a8b4dc069959b65.png",
+    "static/media/tailwind.png": "/portfolio/static/media/tailwind.0c8c1ac2fae918124b80.png",
     "static/media/javascript.png": "/portfolio/static/media/javascript.83f816a137ee2ef5f733.png",
     "static/media/c++.png": "/portfolio/static/media/c++.24a8f93854ab092f17a7.png",
     "static/media/springboot.png": "/portfolio/static/media/springboot.e82018cf32e10af73393.png",
@@ -24,11 +24,11 @@
     "static/media/Firebase.svg": "/portfolio/static/media/Firebase.e6583a29712875c8977afcba1d0b6883.svg",
     "index.html": "/portfolio/index.html",
     "main.7445c26e.css.map": "/portfolio/static/css/main.7445c26e.css.map",
-    "main.5701b18c.js.map": "/portfolio/static/js/main.5701b18c.js.map",
+    "main.4035b2c4.js.map": "/portfolio/static/js/main.4035b2c4.js.map",
     "787.7da95b79.chunk.js.map": "/portfolio/static/js/787.7da95b79.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7445c26e.css",
-    "static/js/main.5701b18c.js"
+    "static/js/main.4035b2c4.js"
   ]
 }
