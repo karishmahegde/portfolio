@@ -12,7 +12,7 @@ export default function Experience(props) {
       id="projects"
       className={`contentWrapper ${props.darkMode ? "dark" : ""}`}
     >
-      <h1>My Projects</h1>
+      <h1>My Projects 💻</h1>
       <Slide duration={2000} direction="left">
         <section>
           <div className="projectContainer">

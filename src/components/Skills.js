@@ -20,7 +20,7 @@ export default function skills(props) {
       className={`contentWrapper ${props.darkMode ? "dark" : ""}`}
     >
       <div className="skillsHeader">
-        <h1>SKILLS</h1>
+        <h1>SKILLS 🛠️</h1>
         <p>what I bring in my toolbox</p>
       </div>
       <div className="skillsBody">
