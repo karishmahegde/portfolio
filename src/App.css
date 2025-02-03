@@ -3,9 +3,10 @@
   --lightGrey: #f5f5f5;
   --darkGrey: #222222;
 
-  --primary: #363d32;
+  /* --primary: #996878; */
+  --primary: #93585e;
   --secondary: #ece5d8;
-  --complementry: #f3a615;
+  --complementry: #e0b548;
 }
 
 /*------------------------------*/
@@ -15,7 +16,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(47, 53, 44, 0.95);
+  background-color: #7d4b50;
   height: 50px;
   padding: 1em;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -617,6 +618,7 @@ nav.dark .togglerSlider {
 
 #skills.contentWrapper .skillsGrid .skillsGridItem .skillsGridItemImg {
   width: 80px;
+  max-height: 80px;
 }
 
 #skills.contentWrapper .skillsGrid .skillsGridItem .skillsGridItemText {
@@ -629,15 +631,16 @@ nav.dark .togglerSlider {
 }
 
 #skills.contentWrapper .skillsGrid.frontendTools {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 #skills.contentWrapper .skillsGrid.applications {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 @media (max-width: 550px) {
   #skills.contentWrapper .skillsGrid .skillsGridItem .skillsGridItemImg {
+    max-height: 40px;
     width: 40px;
   }
   #skills.contentWrapper .skillsGrid .skillsGridItem .skillsGridItemText {

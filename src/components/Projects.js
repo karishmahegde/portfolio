@@ -4,6 +4,7 @@ import Project1 from "../images/project1.jpg";
 import Project2 from "../images/project2.png";
 import Project3 from "../images/project3.png";
 import Project4 from "../images/project4.png";
+import Project5 from "../images/project5.png";
 
 export default function Experience(props) {
   return (
@@ -12,6 +13,57 @@ export default function Experience(props) {
       className={`contentWrapper ${props.darkMode ? "dark" : ""}`}
     >
       <h1>My Projects</h1>
+      <Slide duration={2000} direction="left">
+        <section>
+          <div className="projectContainer">
+            <div className="projectLeft leftToRight">
+              <img src={Project5} alt="Differentially-Private Classifier"></img>
+            </div>
+            <div className="projectRight leftToRight">
+              <div className="content">
+                <h3>Differentially-Private Image Classifier </h3>
+                <p>
+                  This project focuses on implementing{" "}
+                  <b>
+                    Differentially Private Stochastic Gradient Descent (DP-SGD)
+                  </b>{" "}
+                  using <b>Opacus</b>, incorporating:
+                  <ul>
+                    <li>
+                      <b>Adaptive Gradient Clipping</b> and{" "}
+                      <b>Weight Standardization</b> to enhance privacy-utility
+                      trade-offs.
+                    </li>
+                    <li>
+                      Optimization of <b>ResNet-20</b> and <b>WRN-16-4</b> for
+                      image classification on the CIFAR-10 dataset
+                    </li>
+                    <li>
+                      Achieved best accuracy <b>63%</b> accuracy under privacy
+                      constraints, approaching the state-of-the-art benchmark of
+                      70%
+                    </li>
+                  </ul>
+                </p>
+                <p className="projectDomain">Domain: Machine Learning</p>
+                <p className="projectTools">
+                  <p className="projectTools">
+                    Tools 🔧: Python | Opacus | Google Colaboratory
+                  </p>
+                </p>
+                <a
+                  href="https://github.com/karishmahegde/dp-optimizer"
+                  className="projectBtn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Know More
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Slide>
       <Slide duration={2000} direction="right">
         <section>
           <div className="projectContainer">

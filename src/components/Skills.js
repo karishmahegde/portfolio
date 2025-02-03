@@ -1,15 +1,17 @@
 import React from "react";
-import HTML5 from "./images/skillIcons/html5.png";
-import Java from "./images/skillIcons/java.png";
-import CPlusPlus from "./images/skillIcons/c++.png";
-import Python from "./images/skillIcons/python.png";
-import ReactIcon from "./images/skillIcons/react.png";
-import JavaScript from "./images/skillIcons/javascript.png";
-import CSSIcon from "./images/skillIcons/css.png";
-import OracleCPQ from "./images/skillIcons/oracleCPQ.png";
-import AndroidStudio from "./images/skillIcons/androidStudio.png";
-import Firebase from "./images/skillIcons/Firebase.svg";
-import RLanguage from "./images/skillIcons/RLanguage.png";
+import HTML5 from "../images/skillIcons/html5.png";
+import Java from "../images/skillIcons/java.png";
+import CPlusPlus from "../images/skillIcons/c++.png";
+import Python from "../images/skillIcons/python.png";
+import ReactIcon from "../images/skillIcons/react.png";
+import JavaScript from "../images/skillIcons/javascript.png";
+import Tailwind from "../images/skillIcons/tailwind.png";
+import OracleCPQ from "../images/skillIcons/oracleCPQ.png";
+import AndroidStudio from "../images/skillIcons/androidStudio.png";
+import Firebase from "../images/skillIcons/Firebase.svg";
+import SQLIcon from "../images/skillIcons/sqlIcon.png";
+import SpringBoot from "../images/skillIcons/springboot.png";
+import Figma from "../images/skillIcons/figma.webp";
 
 export default function skills(props) {
   return (
@@ -37,12 +39,8 @@ export default function skills(props) {
             <p className="skillsGridItemText">C++</p>
           </div>
           <div className="skillsGridItem">
-            <img
-              src={RLanguage}
-              className="skillsGridItemImg"
-              alt="R Language"
-            ></img>
-            <p className="skillsGridItemText">R</p>
+            <img src={SQLIcon} className="skillsGridItemImg" alt="MySQL"></img>
+            <p className="skillsGridItemText">SQL</p>
           </div>
         </div>
         <h3>frontend tools</h3>
@@ -68,12 +66,28 @@ export default function skills(props) {
             <p className="skillsGridItemText">JavaScript</p>
           </div>
           <div className="skillsGridItem">
-            <img src={CSSIcon} className="skillsGridItemImg" alt="CSS"></img>
-            <p className="skillsGridItemText">CSS</p>
+            <img
+              src={Tailwind}
+              className="skillsGridItemImg"
+              alt="Tailwind CSS"
+            ></img>
+            <p className="skillsGridItemText">Tailwind CSS</p>
+          </div>
+          <div className="skillsGridItem">
+            <img src={Figma} className="skillsGridItemImg" alt="Figma"></img>
+            <p className="skillsGridItemText">Figma</p>
           </div>
         </div>
-        <h3>applications</h3>
+        <h3>frameworks & applications</h3>
         <div className="skillsGrid applications">
+          <div className="skillsGridItem">
+            <img
+              src={SpringBoot}
+              className="skillsGridItemImg"
+              alt="SpringBoot"
+            ></img>
+            <p className="skillsGridItemText">Spring Boot</p>
+          </div>
           <div className="skillsGridItem">
             <img
               src={OracleCPQ}

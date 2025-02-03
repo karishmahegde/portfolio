@@ -1,6 +1,5 @@
 import React from "react";
 import Logo from "../images/logo.png";
-import Resume from "../Resume.pdf";
 
 export default function Navbar(props) {
   return (
@@ -49,7 +48,7 @@ export default function Navbar(props) {
             <a
               id="resumeNav"
               className="navLink"
-              href={Resume}
+              href="https://drive.google.com/uc?export=download&id=1pRNcmupzZ8Rd6Kx9V_74ZMCJzGVUWGAy"
               download="Resume - Karishma Hegde"
             >
               Resume <i class="fa fa-download" />

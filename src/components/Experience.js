@@ -10,19 +10,8 @@ export default function Experience(props) {
         <h2>Experience 💼</h2>
         <div className="experienceContainer">
           <div className="centerLine"></div>
+
           <div className="row row-1">
-            <section>
-              <i className="icon fa fa-briefcase"></i>
-              <div className="experienceText">
-                <p className="experienceRole">Student Assistant</p>
-                <p className="experienceComapny">
-                  <span class="companyName">FMD, University of Georgia</span> |
-                  Jan 2024 - Present
-                </p>
-              </div>
-            </section>
-          </div>
-          <div className="row row-2">
             <section>
               <i className="icon fa fa-briefcase"></i>
               <div className="experienceText">
@@ -33,7 +22,7 @@ export default function Experience(props) {
               </div>
             </section>
           </div>
-          <div className="row row-1">
+          <div className="row row-2">
             <section>
               <i className="icon fa fa-briefcase"></i>
               <div className="experienceText">
@@ -44,7 +33,7 @@ export default function Experience(props) {
               </div>
             </section>
           </div>
-          <div className="row row-2">
+          <div className="row row-1">
             <section>
               <i className="icon fa fa-briefcase"></i>
               <div className="experienceText">
