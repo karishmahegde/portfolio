@@ -58,6 +58,10 @@ export default function skills(props) {
       name: "Tailwind CSS",
       icon: "tailwind.png",
     },
+    {
+      name: "Vite",
+      icon: "vite.png",
+    },
   ];
 
   const app_framework = [
@@ -72,6 +76,10 @@ export default function skills(props) {
     {
       name: "Figma",
       icon: "figma.png",
+    },
+    {
+      name: "Postman",
+      icon: "postman.png",
     },
     {
       name: "Oracle CPQ",
