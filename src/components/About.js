@@ -1,64 +1,63 @@
-import React from "react";
-import AboutImg from "../images/profile.png";
-
 export default function About(props) {
   return (
-    <div id="about" className="contentWrapper">
+    <div
+      id="about"
+      className={`contentWrapper ${props.darkMode ? "dark" : ""}`}
+    >
       <div className="aboutContainer">
-        <div className="aboutTextContainer">
+        <div className="aboutImgContainer">
           <h2>Nice to meet you! 👋🏻</h2>
+          <img
+            className="aboutImg"
+            src={`${process.env.PUBLIC_URL}/images/aboutImg.png`}
+            alt="avatar"
+          />
+        </div>
+        <div className="aboutTextContainer">
           <div className="aboutDetails">
-            <p>
-              I'm <b>Karishma</b>, a passionate application developer and
-              computer engineer 💻. I’m a master’s student{" "}
-              <b>Computer Science</b> at The <b>University of Georgia, USA</b>.
-              I’ll be graduating in May 2025 🎓. My coursework revolves around
-              core Computer Science domains such as Algorithms, Database
-              Management and Human-Computer Interaction. I have also completed
-              courses in the area of Data Science and Privacy-Preserving Data
-              Analysis.
+            <p className="aboutHighlight">
+              <b>
+                I am Karishma, a software developer and computer engineer
+                currently based in USA.
+              </b>
             </p>
             <p>
-              Prior to my academic pursuit, I was contributing my expertise at
-              <b> IBM</b> as an <b>Web Cloud Application Developer</b> for 2.5
-              years 💼. I contributed my skills by coding the business logic for
-              complex user stories and leading the UI redesigning initiatives
-              primarily using HTML, CSS, JavaScript and the cloud application’s
-              language - BML. <br />I also worked at <b>Whatfix</b>, a digital
-              adoption platform startup, where I directly worked with clients to
-              set up the platform on their Web Application, primarily using
-              JavaScript 🚀.
+              As a recent graduate with a <b>Master of Science</b> in{" "}
+              <b>Computer Science</b> from the <b>University of Georgia</b>,
+              I’ve built strong technical foundations across{" "}
+              <i>
+                Data Science, Privacy-Preserving Data Analysis, Human-Computer
+                Interaction
+              </i>
+              , and core areas like <i>Algorithm Design</i> and{" "}
+              <i>Database Management</i>. My final project focused on research
+              in <b>Affective Computing</b>, where I conducted an extensive
+              survey of recent advances to highlight innovative AI
+              methodologies, dataset considerations, and key gaps in developing
+              more empathetic and inclusive emotion-aware systems.{" "}
             </p>
-            <br />
+
+            <p>
+              Previously at <b>IBM</b>, I led the development of scalable web
+              applications and drove UI modernization for enterprise cloud
+              solutions, enhancing performance and user experience across
+              critical systems. At <b>Whatfix</b>, I partnered directly with
+              global clients to integrate tailored digital adoption solutions,
+              streamlining workflows and improving platform engagement.
+            </p>
             <p>
               When I'm not channeling my efforts into improving technology, I
-              find solace in the world of painting and digital art 🎨, immersing
-              myself in the creative flow. My
-              <b>
-                {" "}
-                Instagram page{" "}
-                <a
-                  href="https://www.instagram.com/miracle.creates/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  @miracle.creates
-                </a>
-              </b>
-              , where I share my work has amassed numerous <b> followers 🎉</b>{" "}
-              and collaborated with major art brands.
+              find solace in the world of <b>painting</b> and <b>digital art</b>
+              , immersing myself in the creative flow. I actively share my
+              creative work and ideas on my art page, where I’ve built a growing
+              community of followers and collaborated with major art brands.
             </p>
             <p>
-              I am deeply passionate about advancing my career as a{" "}
-              <b>full stack developer.</b> As an engineer, my aspiration is to
-              craft technology solutions that address contemporary challenges,
-              driven by a blend of creativity, responsibility, and unwavering
-              dedication to my organization ✨.
+              Driven by a blend of engineering rigor and creative instinct, I’m
+              excited to contribute to impactful products and craft technology
+              that’s thoughtful, accessible, and future-forward ✨.
             </p>
           </div>
-        </div>
-        <div className="aboutImgContainer">
-          <img className="aboutImg" src={AboutImg} alt="avatar" />
         </div>
       </div>
     </div>

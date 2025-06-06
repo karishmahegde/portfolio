@@ -1,6 +1,3 @@
-import React from "react";
-import Logo from "../images/logo.png";
-
 export default function Navbar(props) {
   return (
     <nav
@@ -8,10 +5,11 @@ export default function Navbar(props) {
       className={`navContainer ${props.darkMode ? "dark" : ""}`}
     >
       <div id="logoContainer">
-        <img id="logoImg" src={Logo} alt="Logo"></img>
-        <a id="heading" href="#home">
-          karishma hegde
-        </a>
+        <img
+          id="logoImg"
+          src={`${process.env.PUBLIC_URL}/images/logo.png`}
+          alt="Logo"
+        ></img>
       </div>
       <div id="navRightContainer">
         <input id="navToggle" type="checkbox" />
@@ -48,7 +46,7 @@ export default function Navbar(props) {
             <a
               id="resumeNav"
               className="navLink"
-              href="https://drive.google.com/uc?export=download&id=1hmYEbondS4EQ2KCJl6i3yCAx0vD9CBy6"
+              href="https://drive.google.com/uc?export=download&id=1IICfVYiEsVEnN0eYLLH5ZHBe6yB3vXwQ"
               download="Resume - Karishma Hegde"
             >
               Resume <i class="fa fa-download" />

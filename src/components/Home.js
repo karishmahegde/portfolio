@@ -1,9 +1,9 @@
-import { TypeAnimation } from "react-type-animation";
+import home_photo from "../images/profile.png";
 
 export default function Home(props) {
   return (
     <div id="home" className={`contentWrapper ${props.darkMode ? "dark" : ""}`}>
-      <h1 id="introText">Hi, I'm Karishma.</h1>
+      {/* <h1 id="introText">Hi, I'm Karishma.</h1>
       <h1 className="typeText">
         <TypeAnimation
           sequence={[
@@ -27,7 +27,27 @@ export default function Home(props) {
         <button className="homeAboutBtn" type="button">
           ABOUT ME ✨
         </button>
-      </a>
+      </a> */}
+      <div className="homeContainer">
+        <div className="homeTextContainer">
+          <h1 id="introText">
+            Hi, I'm <span className="homeName">Karishma</span>.
+          </h1>
+          <div className="homeDetails">
+            With a background in full-stack development and applied machine
+            learning, I specialize in building scalable, user-centric systems
+            powered by intelligent design.
+          </div>
+          {/* <a href="#about">
+            <button className="homeAboutBtn" type="button">
+              ABOUT ME ✨
+            </button>
+          </a> */}
+        </div>
+        <div className="homeImgContainer">
+          <img className="homeImg" src={home_photo} alt="avatar" />
+        </div>
+      </div>
     </div>
   );
 }
