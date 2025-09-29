@@ -26,29 +26,27 @@ export default function skills(props) {
     },
   ];
 
-  const backEnd = [
-    {
-      name: "SQL",
-      icon: "sql.png",
-    },
-    {
-      name: "Spring Boot",
-      icon: "springboot.png",
-    },
-  ];
-
   const frontEnd = [
     {
       name: "React JS",
       icon: "react.png",
     },
     {
-      name: "HTML5",
-      icon: "html5.png",
+      name: "Next JS",
+      icon: "nextjs.png",
     },
+    {
+      name: "Vite",
+      icon: "vite.png",
+    },
+
     {
       name: "Streamlit",
       icon: "streamlit.png",
+    },
+    {
+      name: "HTML5",
+      icon: "html5.png",
     },
     {
       name: "CSS3",
@@ -58,20 +56,46 @@ export default function skills(props) {
       name: "Tailwind CSS",
       icon: "tailwind.png",
     },
+  ];
+
+  const backEnd = [
     {
-      name: "Vite",
-      icon: "vite.png",
+      name: "Nest.js",
+      icon: "nestjs.png",
+    },
+    {
+      name: "Spring Boot",
+      icon: "springboot.png",
+    },
+    {
+      name: "Node.js",
+      icon: "nodejs.png",
+    },
+    {
+      name: "Google Firebase",
+      icon: "firebase.png",
+    },
+  ];
+
+  const database = [
+    {
+      name: "MySQL",
+      icon: "sql.png",
+    },
+    {
+      name: "MongoDB",
+      icon: "mongodb.png",
     },
   ];
 
   const app_framework = [
     {
-      name: "OpenAI API",
-      icon: "openai.png",
-    },
-    {
       name: "Git",
       icon: "git.png",
+    },
+    {
+      name: "OpenAI API",
+      icon: "openai.png",
     },
     {
       name: "Figma",
@@ -89,10 +113,6 @@ export default function skills(props) {
       name: "Android Studio",
       icon: "android.png",
     },
-    {
-      name: "Google Firebase",
-      icon: "firebase.png",
-    },
   ];
   return (
     <div
@@ -104,7 +124,7 @@ export default function skills(props) {
         <p>what I bring in my toolbox</p>
       </div>
       <div className="skillsBody">
-        <h3>programming languages</h3>
+        <h2>programming languages</h2>
         <div className="skillsGrid">
           {programmingLang.map((skill, idx) => (
             <div className="skillsGridItem" key={idx}>
@@ -117,21 +137,8 @@ export default function skills(props) {
             </div>
           ))}
         </div>
-        <h3>applications and frameworks</h3>
-        <div className="skillsGrid">
-          {app_framework.map((skill, idx) => (
-            <div className="skillsGridItem" key={idx}>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/skillIcons/${skill.icon}`}
-                className="skillsGridItemImg"
-                alt={skill.name}
-              ></img>
-              <p className="skillsGridItemText">{skill.name}</p>
-            </div>
-          ))}
-        </div>
-
-        <h3>frontend tools</h3>
+        <h2>frameworks & libraries</h2>
+        <h3>frontend</h3>
         <div className="skillsGrid">
           {frontEnd.map((skill, idx) => (
             <div className="skillsGridItem" key={idx}>
@@ -144,9 +151,38 @@ export default function skills(props) {
             </div>
           ))}
         </div>
-        <h3>backend tools</h3>
+
+        <h3>backend</h3>
         <div className="skillsGrid">
           {backEnd.map((skill, idx) => (
+            <div className="skillsGridItem" key={idx}>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/skillIcons/${skill.icon}`}
+                className="skillsGridItemImg"
+                alt={skill.name}
+              ></img>
+              <p className="skillsGridItemText">{skill.name}</p>
+            </div>
+          ))}
+        </div>
+
+        <h3>database</h3>
+        <div className="skillsGrid">
+          {database.map((skill, idx) => (
+            <div className="skillsGridItem" key={idx}>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/skillIcons/${skill.icon}`}
+                className="skillsGridItemImg"
+                alt={skill.name}
+              ></img>
+              <p className="skillsGridItemText">{skill.name}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2>applications & frameworks</h2>
+        <div className="skillsGrid">
+          {app_framework.map((skill, idx) => (
             <div className="skillsGridItem" key={idx}>
               <img
                 src={`${process.env.PUBLIC_URL}/images/skillIcons/${skill.icon}`}

@@ -5,10 +5,10 @@
   --blackGray: #141414;
 
   /* --primary: #996878; */
-  --primary: #a85a6c;
-  --primary-r: 168;
-  --primary-g: 90;
-  --primary-b: 108;
+  --primary: #b1626f;
+  --primary-r: 199;
+  --primary-g: 115;
+  --primary-b: 131;
   --secondary: #ece5d8;
   --complementry: #f0b729;
 }
@@ -721,14 +721,23 @@ nav.dark .togglerSlider {
   color: var(--primary);
 }
 
-#skills.contentWrapper .skillsBody h3 {
+#skills.contentWrapper .skillsBody h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   color: var(--darkGrey);
   width: 100%;
 }
 
-#skills.contentWrapper.dark .skillsBody h3 {
+#skills.contentWrapper .skillsBody h3 {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  color: var(--darkGrey);
+  width: 100%;
+  margin-left: 10px;
+}
+
+#skills.contentWrapper.dark .skillsBody h2,
+#skills.contentWrapper .skillsBody h3 {
   color: var(--secondary);
 }
 
@@ -736,7 +745,7 @@ nav.dark .togglerSlider {
   display: grid;
   font-family: "Montserrat", sans-serif;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 2rem;
+  gap: 1rem;
   justify-items: center;
   align-items: center;
   text-align: center;
