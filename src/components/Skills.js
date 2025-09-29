@@ -32,6 +32,10 @@ export default function skills(props) {
       icon: "react.png",
     },
     {
+      name: "TypeScript",
+      icon: "typescript.png",
+    },
+    {
       name: "Next JS",
       icon: "nextjs.png",
     },

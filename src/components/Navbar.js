@@ -46,7 +46,7 @@ export default function Navbar(props) {
             <a
               id="resumeNav"
               className="navLink"
-              href="https://drive.google.com/uc?export=download&id=1bcOB_MZpgBJI11S3RQEjywuh3yR21fhZ"
+              href="https://drive.google.com/uc?export=download&id=1306-8vu2e6YewoKmB2hTOuJtaCNfmCpO"
               download="Resume - Karishma Hegde"
             >
               Resume <i class="fa fa-download" />
