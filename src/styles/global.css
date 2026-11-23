@@ -1,0 +1,136 @@
+/*
+ * Global styles and design tokens.
+ * Source of truth: brief/style-guide.html (v2). Values here are copied from it,
+ * not reinterpreted. Change the guide first, then this file.
+ */
+
+/* Fonts are self-hosted through Fontsource (no Google Fonts request).
+   Newsreader uses the opsz build so the optical-size axis is available;
+   the default variable file only carries the weight axis. No italics are
+   used by the guide, so opsz-italic.css is not loaded. */
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/dm-mono/400.css";
+@import "@fontsource/dm-mono/500.css";
+
+@import "tailwindcss";
+
+/*
+ * Each namespace below is reset with `initial` first, so Tailwind's default
+ * palette, spacing, radii and breakpoints are not available. A class like
+ * `bg-red-500` or `p-7` therefore fails instead of quietly adding a value the
+ * guide does not allow.
+ *
+ * Token names follow Tailwind's namespaces (so `bg-charcoal`, `p-4`,
+ * `rounded-lg` work). The guide's names are in the comments.
+ */
+@theme {
+  /* Colour: guide section 01 */
+  --color-*: initial;
+  --color-charcoal: #1e1d22; /* --color-bg-primary */
+  --color-steel: #2a3646; /* --color-bg-secondary */
+  --color-surface: #2f3a4c; /* --color-surface: raised panels, light-section secondary text */
+  --color-offwhite: #f0f1f4; /* --color-text-primary */
+  --color-muted: #a3a4ac; /* --color-text-muted */
+  --color-bright: #3e9bff; /* --color-action */
+  --color-soft: #9cc4f5; /* --color-link */
+  --color-rose: #733f48; /* --color-accent */
+  --color-hairline: rgb(255 255 255 / 0.08); /* --color-line */
+  --color-hairline-light: rgb(30 29 34 / 0.12); /* --color-line-light */
+
+  /* Type: guide section 02 */
+  --font-*: initial;
+  --font-serif: "Newsreader Variable", "Newsreader", Georgia, serif; /* --font-display */
+  --font-sans: "Montserrat", system-ui, sans-serif; /* --font-body */
+  --font-mono: "DM Mono", ui-monospace, monospace; /* --font-label */
+
+  /* Named sizes from the guide. Tailwind's default text scale is kept for
+     now; it is not reset because the guide doesn't define every size yet. */
+  --text-hero: clamp(3.2rem, 9vw, 7.6rem);
+  --text-hero--line-height: 0.98;
+  --text-hero--letter-spacing: -0.025em;
+  --text-section: clamp(2.4rem, 6vw, 4.4rem);
+  --text-section--line-height: 1.04;
+  --text-section--letter-spacing: -0.025em;
+  --text-body: 17px;
+  --text-body--line-height: 1.65;
+  --text-label: 13px; /* DM Mono labels, dates, tags, strips */
+  --text-label--line-height: 1.4;
+  --text-ui: 14px; /* buttons and nav labels */
+
+  --tracking-display: -0.025em;
+  --tracking-ui: 0.06em; /* uppercase button and nav labels */
+
+  /* Spacing: guide section 03. Eight steps and no other values. */
+  --spacing-*: initial;
+  --spacing: initial;
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 16px;
+  --spacing-4: 24px;
+  --spacing-5: 32px;
+  --spacing-6: 48px;
+  --spacing-7: 80px;
+  --spacing-8: 112px;
+
+  /* Radius. Named sm/lg rather than s/l, because Tailwind already uses
+     `rounded-s-*` for logical "start" corners. */
+  --radius-*: initial;
+  --radius-sm: 6px; /* --radius-s: inner rows, tags */
+  --radius-lg: 10px; /* --radius-l: panels, photos */
+  --radius-pill: 999px; /* --radius-pill: buttons only */
+
+  /* Layout */
+  --container-*: initial;
+  --container-content: 1120px; /* --container */
+
+  /* Breakpoints (mobile first: unprefixed classes are the mobile layout) */
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 720px; /* --bp-mobile: mobile is below this */
+  --breakpoint-nav: 900px; /* --bp-nav: navbar collapses below this */
+  --breakpoint-desktop: 1120px; /* --bp-desktop */
+
+  /* Button hover glow: rose at 75%, from the guide's button spec */
+  --shadow-*: initial;
+  --shadow-glow: 0 8px 22px -4px rgb(115 63 72 / 0.75);
+
+  /* Motion: guide section 05 */
+  --ease-rise: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-charcoal);
+    color: var(--color-offwhite);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus: 2px bright blue outline, 3px offset, on every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--color-bright);
+    outline-offset: 3px;
+  }
+
+  /* Reduced motion: all motion off, final states shown (guide section 05). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

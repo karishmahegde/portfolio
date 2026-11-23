@@ -15,4 +15,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      # Job keeps the name "build": the protect-main ruleset requires that check.
+      - run: npm run check
+      - run: npm run lint
       - run: npm run build
