@@ -1,0 +1,55 @@
+---
+/**
+ * Button or button-style link. Styles live in global.css (.btn) so the
+ * React navbar can share them.
+ *
+ * - With `href` it renders a link; without, a <button>.
+ * - A disabled link drops its href and gets aria-disabled, so it can't be
+ *   followed but still reads as a link.
+ * - Extra attributes (target, rel, download, aria-*) pass straight through.
+ * - Use `primary` on light sections: secondary is off-white and would vanish.
+ */
+import type { HTMLAttributes } from 'astro/types';
+import Icon, { type IconName } from './Icon.astro';
+
+type Props = Omit<HTMLAttributes<'a'> & HTMLAttributes<'button'>, 'type'> & {
+  /** special: the gradient button. Resume only; ask the owner before using it elsewhere. */
+  variant?: 'primary' | 'secondary' | 'special';
+  href?: string;
+  icon?: IconName;
+  disabled?: boolean;
+  type?: 'button' | 'submit';
+};
+
+const {
+  variant = 'primary',
+  href,
+  icon,
+  disabled = false,
+  type = 'button',
+  class: className,
+  ...rest
+} = Astro.props;
+
+const classes = ['btn', `btn-${variant}`, className];
+---
+
+{
+  href !== undefined ? (
+    <a
+      href={disabled ? undefined : href}
+      aria-disabled={disabled ? 'true' : undefined}
+      role={disabled ? 'link' : undefined}
+      class:list={classes}
+      {...rest}
+    >
+      <slot />
+      {icon && <Icon name={icon} />}
+    </a>
+  ) : (
+    <button type={type} disabled={disabled} class:list={classes} {...rest}>
+      <slot />
+      {icon && <Icon name={icon} />}
+    </button>
+  )
+}

@@ -1,0 +1,54 @@
+---
+/**
+ * Shared page shell: <head>, skip link, main landmark.
+ * Navbar and footer will be added here in their own steps.
+ */
+import '../styles/global.css';
+
+interface Props {
+  /** Page name, e.g. "About me". Omit on the homepage. */
+  title?: string;
+  description?: string;
+  /** Keep the page out of search results (used by the /tokens test page). */
+  noindex?: boolean;
+}
+
+const SITE_NAME = 'Karishma Hegde';
+
+const {
+  title,
+  description = '[PLACEHOLDER: meta description]',
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <!-- Appears only on keyboard focus; jumps past the navbar. -->
+    <a href="#main" class="btn btn-primary sr-only-focusable fixed top-3 left-3 z-50">
+      Skip to content
+    </a>
+
+    <!-- Navbar goes here (next step). -->
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <!-- Footer goes here (built with the pages). -->
+  </body>
+</html>
