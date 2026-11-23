@@ -1,0 +1,40 @@
+---
+/**
+ * Page section with the guide's background, padding and container.
+ *
+ * - tone: charcoal | steel | light. Adjacent sections must not share a
+ *   background, and a light section always sits between two dark ones.
+ *   This is the page's job to arrange; the component only paints.
+ * - glow: the corner glow. The guide allows it on the hero and Works only,
+ *   and only on charcoal, so it is ignored on other tones.
+ * - Padding: 80px vertical on mobile, 112px from 720px.
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'section'> & {
+  tone?: 'charcoal' | 'steel' | 'light';
+  glow?: boolean;
+};
+
+const { tone = 'charcoal', glow = false, class: className, ...rest } = Astro.props;
+
+const toneClasses = {
+  charcoal: 'bg-charcoal text-offwhite tone-dark',
+  steel: 'bg-steel text-offwhite tone-dark',
+  light: 'bg-offwhite text-charcoal tone-light',
+};
+---
+
+<section
+  class:list={[
+    'py-7 tablet:py-8',
+    toneClasses[tone],
+    { 'corner-glow': glow && tone === 'charcoal' },
+    className,
+  ]}
+  {...rest}
+>
+  <div class="wrap">
+    <slot />
+  </div>
+</section>

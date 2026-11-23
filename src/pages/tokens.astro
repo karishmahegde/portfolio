@@ -1,0 +1,128 @@
+---
+/**
+ * TEMPORARY review page for the design tokens and base components.
+ * Not linked from the site, marked noindex, and deleted before launch
+ * (see "Pre-publish checks" in CLAUDE.md). Text here is sample text only.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+
+const colours = [
+  { name: 'Charcoal', token: 'charcoal', hex: '#1E1D22', role: 'Primary background', cls: 'bg-charcoal text-offwhite' },
+  { name: 'Steel blue', token: 'steel', hex: '#2A3646', role: 'Secondary background, footer', cls: 'bg-steel text-offwhite' },
+  { name: 'Surface', token: 'surface', hex: '#2F3A4C', role: 'Raised panels (on charcoal only); secondary text on light', cls: 'bg-surface text-offwhite' },
+  { name: 'Off-white', token: 'offwhite', hex: '#F0F1F4', role: 'Primary text, secondary button', cls: 'bg-offwhite text-charcoal' },
+  { name: 'Muted grey', token: 'muted', hex: '#A3A4AC', role: 'Secondary text, captions', cls: 'bg-muted text-charcoal' },
+  { name: 'Bright blue', token: 'bright', hex: '#3E9BFF', role: 'Focus, current nav link, approval, special gradient', cls: 'bg-bright text-charcoal' },
+  { name: 'Deep blue', token: 'deep', hex: '#1B62C2', role: 'Primary button', cls: 'bg-deep text-offwhite' },
+  { name: 'Electric blue', token: 'electric', hex: '#0F5AFF', role: 'Special button gradient', cls: 'bg-electric text-offwhite' },
+  { name: 'Soft blue', token: 'soft', hex: '#9CC4F5', role: 'Links, labels, tags', cls: 'bg-soft text-charcoal' },
+  { name: 'Rose', token: 'rose', hex: '#733F48', role: 'Monogram, marquee, button glow', cls: 'bg-rose text-offwhite' },
+];
+---
+
+<BaseLayout title="Tokens (review only)" noindex>
+  <Section glow>
+    <p class="mb-3 font-mono text-label text-tone-muted">Review page · not part of the site</p>
+    <h1 class="font-serif text-hero">Design tokens</h1>
+    <p class="mt-4 max-w-[60ch] text-tone-muted">
+      Sample text. This page shows every token and base component from style guide v2 so they can be
+      checked in the browser. Hover the buttons and press Tab to see focus states.
+    </p>
+  </Section>
+
+  <Section tone="steel">
+    <h2 class="mb-6 font-serif text-section">Colour</h2>
+    <div class="grid grid-cols-2 gap-3 tablet:grid-cols-4">
+      {
+        colours.map((c) => (
+          <div class:list={['flex min-h-[120px] flex-col justify-between rounded-lg p-3 shadow-[inset_0_0_0_1px_var(--color-hairline)]', c.cls]}>
+            <div>
+              <b class="text-sm font-semibold">{c.name}</b>
+              <br />
+              <code class="font-mono text-label">{c.hex} · {c.token}</code>
+            </div>
+            <span class="text-sm">{c.role}</span>
+          </div>
+        ))
+      }
+    </div>
+    <p class="mt-4 font-mono text-label text-tone-muted">
+      Hairline (8% off-white) below. On light sections it becomes 12% charcoal.
+    </p>
+    <hr class="mt-3 border-0 border-t border-hairline" />
+  </Section>
+
+  <Section>
+    <h2 class="mb-6 font-serif text-section">Type</h2>
+    <div class="grid gap-5">
+      <div>
+        <p class="mb-2 font-mono text-label text-tone-muted">Hero · Newsreader Variable · clamp(2.7rem, 7.4vw, 6.2rem) / 0.98</p>
+        <p class="font-serif text-hero">Sample display</p>
+      </div>
+      <div>
+        <p class="mb-2 font-mono text-label text-tone-muted">Section title · Newsreader Variable · clamp(2.4rem, 6vw, 4.4rem) / 1.04</p>
+        <p class="font-serif text-section">Sample section heading</p>
+      </div>
+      <div>
+        <p class="mb-2 font-mono text-label text-tone-muted">Body · Montserrat 400 · 17px / 1.65 · 500 and 600 below</p>
+        <p class="max-w-[60ch]">
+          Sample body text. It shows the measure, line-height and colour across two lines of copy, so the
+          spacing can be checked by eye.
+        </p>
+        <p class="font-medium">Montserrat 500 sample</p>
+        <p class="font-semibold">Montserrat 600 sample</p>
+        <p class="text-tone-muted">Muted secondary text sample</p>
+      </div>
+      <div>
+        <p class="mb-2 font-mono text-label text-tone-muted">Label · DM Mono 400 and 500 · 13px</p>
+        <p class="font-mono text-label">Sample label · Tag · Tag</p>
+        <p class="font-mono text-label font-medium">Sample label 500 · Tag · Tag</p>
+      </div>
+      <div>
+        <p class="mb-2 font-mono text-label text-tone-muted">Text link · soft blue 600, off-white on hover</p>
+        <a class="text-link" href="#main">Sample text link →</a>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="steel">
+    <h2 class="mb-6 font-serif text-section">Buttons</h2>
+    <p class="mb-3 font-mono text-label text-tone-muted">Special (Resume only) · primary · secondary · with icons · disabled</p>
+    <div class="flex flex-wrap items-center gap-3">
+      <Button href="#main" variant="special" icon="download">Resume</Button>
+      <Button href="#main">Primary</Button>
+      <Button href="#main" variant="secondary">Secondary</Button>
+      <Button href="#main" variant="secondary" icon="external">Live site</Button>
+      <Button href="#main" variant="secondary" icon="github">Repo</Button>
+      <Button href="#main" disabled>Disabled link</Button>
+      <Button disabled variant="secondary">Disabled button</Button>
+    </div>
+  </Section>
+
+  <Section glow>
+    <h2 class="mb-4 font-serif text-section">Charcoal with corner glow</h2>
+    <p class="max-w-[60ch] text-tone-muted">Sample text. Glow is allowed on the hero and Works only.</p>
+  </Section>
+
+  <Section tone="light">
+    <h2 class="mb-4 font-serif text-section">Light section</h2>
+    <p class="mb-6 font-mono text-label text-tone-muted">Sample note text for the light section.</p>
+    <div class="border-t border-tone-line py-4">
+      <p class="font-semibold">Sample role</p>
+      <p class="font-semibold text-tone-muted">Sample organisation</p>
+      <p class="max-w-[62ch] text-tone-muted">Sample body text describing responsibilities in one or two lines.</p>
+    </div>
+    <div class="border-y border-tone-line py-4">
+      <p class="font-semibold">Sample role</p>
+      <p class="font-semibold text-tone-muted">Sample organisation</p>
+    </div>
+    <p class="mt-4"><a class="text-link" href="#main">Sample text link on light</a></p>
+    <div class="mt-5"><Button href="#main">Sample action</Button></div>
+  </Section>
+
+  <Section>
+    <p class="font-mono text-label text-tone-muted">End of review page.</p>
+  </Section>
+</BaseLayout>

@@ -31,10 +31,14 @@
   --color-*: initial;
   --color-charcoal: #1e1d22; /* --color-bg-primary */
   --color-steel: #2a3646; /* --color-bg-secondary */
+  /* Raised panels go on charcoal sections only: surface vs steel is 1.07:1,
+     so a panel on steel disappears (guide v2.1). */
   --color-surface: #2f3a4c; /* --color-surface: raised panels, light-section secondary text */
   --color-offwhite: #f0f1f4; /* --color-text-primary */
   --color-muted: #a3a4ac; /* --color-text-muted */
-  --color-bright: #3e9bff; /* --color-action */
+  --color-bright: #3e9bff; /* --color-action: focus, current nav link, approval state, start of the special gradient */
+  --color-deep: #1b62c2; /* --color-action-deep: primary button (off-white text 5.20:1, 4.54:1 hovered) */
+  --color-electric: #0f5aff; /* --color-action-electric: special button gradient (off-white text 4.74:1) */
   --color-soft: #9cc4f5; /* --color-link */
   --color-rose: #733f48; /* --color-accent */
   --color-hairline: rgb(255 255 255 / 0.08); /* --color-line */
@@ -48,7 +52,7 @@
 
   /* Named sizes from the guide. Tailwind's default text scale is kept for
      now; it is not reset because the guide doesn't define every size yet. */
-  --text-hero: clamp(3.2rem, 9vw, 7.6rem);
+  --text-hero: clamp(2.7rem, 7.4vw, 6.2rem); /* v2.1: ~18% smaller than v2 */
   --text-hero--line-height: 0.98;
   --text-hero--letter-spacing: -0.025em;
   --text-section: clamp(2.4rem, 6vw, 4.4rem);
@@ -93,12 +97,23 @@
   --breakpoint-nav: 900px; /* --bp-nav: navbar collapses below this */
   --breakpoint-desktop: 1120px; /* --bp-desktop */
 
-  /* Button hover glow: rose at 75%, from the guide's button spec */
   --shadow-*: initial;
-  --shadow-glow: 0 8px 22px -4px rgb(115 63 72 / 0.75);
+  /* Hover glows. Blue for primary and secondary buttons; rose is kept for
+     the special button only, so it stays distinctive. */
+  --shadow-glow: 0 8px 22px -4px rgb(62 155 255 / 0.5); /* bright blue */
+  --shadow-glow-special: 0 10px 32px -2px rgb(115 63 72 / 0.95); /* rose */
 
   /* Motion: guide section 05 */
   --ease-rise: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+/* Tone colours: utilities (text-tone-muted, border-tone-line, ...) that
+   follow the section they sit in. `inline` makes the utility read the
+   variable on the element itself, so .tone-light overrides take effect. */
+@theme inline {
+  --color-tone-muted: var(--tone-muted);
+  --color-tone-link: var(--tone-link);
+  --color-tone-line: var(--tone-line);
 }
 
 @layer base {
@@ -123,6 +138,21 @@
     outline-offset: 3px;
   }
 
+  /* Section tones. Components use these variables, not raw colours, so the
+     same markup reads correctly on dark and light sections.
+     Dark is the default; Section.astro adds .tone-light for light sections. */
+  :root,
+  .tone-dark {
+    --tone-muted: var(--color-muted);
+    --tone-link: var(--color-soft);
+    --tone-line: var(--color-hairline);
+  }
+  .tone-light {
+    --tone-muted: var(--color-surface);
+    --tone-link: var(--color-surface);
+    --tone-line: var(--color-hairline-light);
+  }
+
   /* Reduced motion: all motion off, final states shown (guide section 05). */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -132,5 +162,152 @@
       transition: none !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+/*
+ * Content container: 1120px max, 22px side padding on mobile, 32px from 720px.
+ * 22px is the guide's mobile side padding; it is the one value outside the
+ * spacing scale, and the guide sets it explicitly.
+ */
+@utility wrap {
+  max-width: var(--container-content);
+  margin-inline: auto;
+  padding-inline: 22px;
+  @variant tablet {
+    padding-inline: var(--spacing-5);
+  }
+}
+
+/* Corner glow: bright blue 18% in the top-right with a fine grain overlay.
+   Copied from the guide. Charcoal sections only (hero and Works). */
+@utility corner-glow {
+  background-color: var(--color-charcoal);
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    radial-gradient(640px 340px at 86% 0, rgb(62 155 255 / 0.18), transparent 72%);
+  background-size: 160px 160px, auto;
+  background-blend-mode: overlay, normal;
+}
+
+/* Visually hidden until focused (used by the skip link). */
+@utility sr-only-focusable {
+  &:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@layer components {
+  /*
+   * Buttons. One shared class so Astro pages and React islands (the navbar)
+   * render identical buttons. Spec: CLAUDE.md "Buttons" and guide v2.
+   * Fixed 44px height keeps every button the same size, with or without icon.
+   */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    height: 44px;
+    padding-inline: var(--spacing-4);
+    border: 0;
+    border-radius: var(--radius-pill);
+    font: 600 var(--text-ui) / 1 var(--font-sans);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease,
+      filter 150ms ease;
+  }
+  .btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  /* Primary: solid deep blue, off-white text. Bright blue is too light for
+     off-white text (2.5:1); deep blue passes at rest and when hovered. */
+  .btn-primary {
+    background-color: var(--color-deep);
+    color: var(--color-offwhite);
+  }
+  /* Secondary is off-white, so it is not used on light sections. */
+  .btn-secondary {
+    background-color: var(--color-offwhite);
+    color: var(--color-charcoal);
+  }
+  .btn:not([aria-disabled="true"], :disabled):hover {
+    filter: brightness(1.09);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+  .btn[aria-disabled="true"],
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  /*
+   * Special: the one gradient button (Resume only, for now; the owner
+   * decides any others). The gradient is twice the button's width and
+   * runs lightest to darkest (bright -> electric -> deep), so sliding it
+   * on hover deepens the whole button without a dark band moving across.
+   * OKLab interpolation keeps the blues from turning muddy in between.
+   * Rest shows bright -> electric; hover shows electric -> deep, where the
+   * label is 4.74:1 or higher. The brightness filter is skipped on hover
+   * because it would lighten the background behind the off-white label.
+   */
+  .btn-special {
+    color: var(--color-offwhite);
+    background-color: var(--color-deep);
+    background-image: linear-gradient(
+      110deg in oklab,
+      var(--color-bright),
+      var(--color-electric),
+      var(--color-deep)
+    );
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease,
+      background-position 900ms ease-in-out;
+  }
+  .btn-special:not([aria-disabled="true"], :disabled):hover {
+    background-position: 100% 50%;
+    filter: none;
+    box-shadow: var(--shadow-glow-special);
+  }
+
+  /* Reduced motion: no lift. Colour and glow changes still show on hover,
+     but appear instantly because transitions are off globally. */
+  @media (prefers-reduced-motion: reduce) {
+    .btn:not([aria-disabled="true"], :disabled):hover {
+      transform: none;
+    }
+  }
+
+  /* Text link: soft blue, 600, no underline, off-white on hover.
+     On light sections: surface colour, underlined with a 4px offset. */
+  .text-link {
+    color: var(--tone-link);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .text-link:hover {
+    color: var(--color-offwhite);
+  }
+  .tone-light .text-link {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .tone-light .text-link:hover {
+    color: var(--color-charcoal);
   }
 }
