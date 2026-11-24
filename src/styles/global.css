@@ -2,6 +2,8 @@
  * Global styles and design tokens.
  * Source of truth: brief/style-guide.html (v3). Values here are copied from it,
  * not reinterpreted. Change the guide first, then this file.
+ * Component-specific styles live with their component (for example the hero
+ * animation in components/home/Hero.astro).
  */
 
 /* Fonts are self-hosted through Fontsource (no Google Fonts request).
@@ -211,6 +213,24 @@ main > section:first-child {
   padding-top: calc(var(--nav-height) + var(--spacing-5));
 }
 
+/* Full-screen hero: at least the viewport's height (svh, so mobile browser
+   bars don't make it jump), with its content centred vertically in the
+   space under the navbar. The bottom padding matches the 32px gap under
+   the bar, so the content sits visually in the middle. Unlayered for the
+   same reason as the rule above. */
+.hero-fill {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: var(--spacing-5);
+}
+/* In a flex column, .wrap's auto side margins would shrink it to its
+   content and centre it; keep it the full container width instead. */
+.hero-fill > .wrap {
+  width: 100%;
+}
+
 /* Navbar frosted background: a light charcoal tint (10%, matched to the
    owner's previous site), so the bar reads as see-through over dark
    sections. The 6px blur is set in Navbar.tsx: backdrop-blur-[6px] for
@@ -362,5 +382,23 @@ main > section:first-child {
   }
   .tone-light .text-link:hover {
     color: var(--color-charcoal);
+  }
+
+  /* Text link set like a button label (12px, 500, uppercase, no
+     letter-spacing), for links that sit next to a button, such as the
+     hero's "About" beside "My work". */
+  .text-link-ui {
+    font-size: var(--text-ui);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  /* Colours flipped from .text-link on dark sections: off-white at rest,
+     soft blue on hover. Light sections keep the .tone-light text-link
+     colours. */
+  .tone-dark .text-link-ui {
+    color: var(--color-offwhite);
+  }
+  .tone-dark .text-link-ui:hover {
+    color: var(--color-soft);
   }
 }

@@ -8,6 +8,9 @@
  * - glow: the corner glow. The guide allows it on the hero and Works only,
  *   and only on charcoal, so it is ignored on other tones.
  * - Padding: 80px vertical on mobile, 112px from 720px.
+ * - Slot "background": decorative layers drawn behind the content, outside
+ *   the container (for example the hero's network). The section is then
+ *   positioned and isolated so those layers stay behind its content.
  */
 import type { HTMLAttributes } from 'astro/types';
 
@@ -17,6 +20,7 @@ type Props = HTMLAttributes<'section'> & {
 };
 
 const { tone = 'charcoal', glow = false, class: className, ...rest } = Astro.props;
+const hasBackground = Astro.slots.has('background');
 
 const toneClasses = {
   charcoal: 'bg-charcoal text-offwhite tone-dark',
@@ -30,10 +34,12 @@ const toneClasses = {
     'py-7 tablet:py-8',
     toneClasses[tone],
     { 'corner-glow': glow && tone === 'charcoal' },
+    { 'relative isolate overflow-hidden': hasBackground },
     className,
   ]}
   {...rest}
 >
+  <slot name="background" />
   <div class="wrap">
     <slot />
   </div>

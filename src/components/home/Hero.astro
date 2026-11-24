@@ -1,0 +1,148 @@
+---
+/**
+ * Homepage hero. Copy from brief/blueprint.md "Homepage copy": greeting,
+ * headline, tag line, then one primary action and one text link. Charcoal
+ * with the corner glow and a node-and-edge network (HeroNetwork.astro)
+ * behind the content, filling the screen with its content centred
+ * (.hero-fill in global.css).
+ *
+ * Headline accents: "user-centric" in Newsreader italic (the real italic
+ * font file) and "AI systems" in soft blue (not a button blue, because
+ * bright blue means clickable).
+ *
+ * The text animation is pure CSS (no JavaScript), so it starts at first
+ * paint. (The network behind it has its own small drift script.)
+ * - Headline, by word: each word rises a full line height through a
+ *   clipping mask while fading in (0.8s each, 50ms apart, quart-out).
+ * - Sequence: greeting (0s), headline words (from 0.08s), tag line
+ *   (1.45s), buttons (1.6s).
+ * - Real text: the <h1> is the full sentence as normal text, split into
+ *   word spans with real spaces; nothing is hidden from screen readers.
+ * - Reduced motion: the global rule removes the animations, and everything
+ *   shows in its final state.
+ */
+import Section from '../Section.astro';
+import Button from '../Button.astro';
+import HeroNetwork from './HeroNetwork.astro';
+
+// The greeting and "About" are stored in normal case and capitalised by
+// CSS; the tag line is stored as it appears.
+const greeting = "Hi, I'm Karishma.";
+const headline =
+  'I build user-centric applications powered by AI systems that are secure by design.';
+const accents: Record<string, string> = { 'user-centric': 'hero-italic', 'AI systems': 'text-soft' };
+
+const tagLine = 'AI RESEARCH & DEVELOPMENT · FULL-STACK ENGINEERING';
+
+// Timing (seconds).
+const HEADLINE_START = 0.08;
+const WORD_STAGGER = 0.05;
+const TAGS_START = 1.45;
+const BUTTONS_START = 1.6;
+
+const bare = (w: string) => w.replace(/[.,!?;:]+$/, '');
+const words = headline.split(' ');
+
+// Word index -> accent class.
+const accentAt: Record<number, string> = {};
+for (const [accentPhrase, cls] of Object.entries(accents)) {
+  const parts = accentPhrase.split(' ');
+  for (let i = 0; i + parts.length <= words.length; i++) {
+    if (parts.every((p, j) => bare(words[i + j]) === p)) {
+      parts.forEach((_, j) => (accentAt[i + j] = cls));
+      break;
+    }
+  }
+}
+
+const delay = (seconds: number) => `animation-delay: ${seconds.toFixed(2)}s`;
+---
+
+<Section glow class="hero-fill">
+  <HeroNetwork slot="background" />
+
+  <p class="hero-fade hero-greeting mb-4 text-[18px] font-medium tracking-ui text-rose-light uppercase" style={delay(0)}>
+    {greeting}
+  </p>
+
+  <h1 class="font-serif text-hero nav:max-w-[13em]">
+    {
+      words.map((text, i) => (
+        <>
+          <span class="word-mask">
+            <span class:list={['hero-word', accentAt[i]]} style={delay(HEADLINE_START + i * WORD_STAGGER)}>
+              {text}
+            </span>
+          </span>
+          {i < words.length - 1 && ' '}
+        </>
+      ))
+    }
+  </h1>
+
+  <p class="hero-fade mt-6 font-sans text-[12px] leading-[1.6] text-tone-muted" style={delay(TAGS_START)}>
+    {tagLine}
+  </p>
+
+  <div class="hero-fade mt-6 flex flex-wrap items-center gap-5" style={delay(BUTTONS_START)}>
+    <Button href="/works">My work</Button>
+    <a href="/about" class="text-link text-link-ui">About</a>
+  </div>
+</Section>
+
+<style>
+  /* Word mask: clips each word while it rises into place. The bottom
+     padding, offset by a negative margin, leaves room for descenders
+     (g, y, p) at the tight 1.05 line-height. */
+  .word-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+  }
+
+  /* Headline words: rise a full line height through the mask while fading
+     in. Quart-out easing: quick start, long soft settle. */
+  .hero-word {
+    display: inline-block;
+    animation: hero-word-rise 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+  }
+  @keyframes hero-word-rise {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Italic accent word. The word mask clips, so the slanted letters get a
+     little room on the right. */
+  .hero-italic {
+    font-style: italic;
+    padding-right: 0.08em;
+    margin-right: -0.08em;
+  }
+
+  /* Greeting, tag line, buttons: a gentle 12px fade-rise (guide easing).
+     The greeting is quicker, so the headline follows it promptly. */
+  .hero-fade {
+    animation: hero-fade-rise 0.8s var(--ease-rise) both;
+  }
+  .hero-greeting {
+    animation-duration: 0.35s;
+  }
+  @keyframes hero-fade-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
