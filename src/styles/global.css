@@ -62,7 +62,7 @@
   --text-body--line-height: 1.65;
   --text-label: 13px; /* DM Mono labels, dates, tags, strips */
   --text-label--line-height: 1.4;
-  --text-ui: 14px; /* buttons and nav labels */
+  --text-ui: 12px; /* button labels (matched to the owner's previous site) */
 
   --tracking-display: -0.025em;
   --tracking-ui: 0.06em; /* uppercase button and nav labels */
@@ -94,7 +94,7 @@
   /* Breakpoints (mobile first: unprefixed classes are the mobile layout) */
   --breakpoint-*: initial;
   --breakpoint-tablet: 720px; /* --bp-mobile: mobile is below this */
-  --breakpoint-nav: 900px; /* --bp-nav: navbar collapses below this */
+  --breakpoint-nav: 1024px; /* --bp-nav: navbar collapses below this (40px link gaps need the room) */
   --breakpoint-desktop: 1120px; /* --bp-desktop */
 
   --shadow-*: initial;
@@ -119,7 +119,13 @@
 @layer base {
   html {
     color-scheme: dark;
+    /* Navbar height, matched to the owner's previous site: 28px padding
+       around a 48px monogram. */
+    --nav-height: 104px;
+    /* In-page links (#main, #section) land below the fixed navbar. */
+    scroll-padding-top: calc(var(--nav-height) + var(--spacing-3));
   }
+
 
   body {
     background-color: var(--color-charcoal);
@@ -190,6 +196,58 @@
   background-blend-mode: overlay, normal;
 }
 
+/* The navbar is fixed and overlays the page, so the first section on each
+   page starts its content 32px below the bar instead of under it. The
+   section's background still runs up behind the bar (keeps the corner glow
+   unbroken). Unlayered on purpose: it must override Section's py-7 /
+   tablet:py-8 utilities, and unlayered CSS beats every @layer. */
+main > section:first-child {
+  padding-top: calc(var(--nav-height) + var(--spacing-5));
+}
+
+/* Navbar frosted background: a light charcoal tint (10%, matched to the
+   owner's previous site), so the bar reads as see-through over dark sections. The 6px blur is set in Navbar.tsx:
+   backdrop-blur-[6px] for the standard property, plus an inline
+   WebkitBackdropFilter for Safari < 18, because the CSS optimiser strips
+   the -webkit- version from stylesheets. */
+@utility nav-frosted {
+  background-color: rgb(30 29 34 / 0.1);
+}
+
+/* Stronger charcoal tint (80%) for the mobile menu panel and the bar while
+   the menu is open: the panel's large off-white links sit over page text. */
+@utility nav-frosted-strong {
+  background-color: rgb(30 29 34 / 0.8);
+}
+
+/* Light bar: over light sections the navbar switches to frosted off-white
+   with charcoal links (a dark tint over off-white only turns grey). */
+@utility nav-frosted-light {
+  /* 70%: see-through, so the light bar shows the same blur as the dark one.
+     The blur stops at the bar's edge; the veil gives the soft edge. */
+  background-color: rgb(240 241 244 / 0.7);
+}
+
+/* Light bar's soft edge: an off-white veil fading out over 24px below the
+   bar, with no blur, so text passing under it stays sharp (blurred dark
+   text on off-white reads as a grey smudge). */
+@utility nav-veil-light {
+  background-image: linear-gradient(to bottom, rgb(240 241 244 / 0.7), transparent);
+}
+
+/* Navbar container, matched to the owner's previous site: 1280px max with
+   28px side padding. Wider than .wrap (1120px), so the monogram and Resume
+   sit further out than the page content. On phones (below 720px) it uses
+   22px instead, so the monogram lines up with the page text. Navbar only. */
+@utility nav-container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 22px;
+  @variant tablet {
+    padding-inline: 28px;
+  }
+}
+
 /* Visually hidden until focused (used by the skip link). */
 @utility sr-only-focusable {
   &:not(:focus) {
@@ -205,19 +263,20 @@
 @layer components {
   /*
    * Buttons. One shared class so Astro pages and React islands (the navbar)
-   * render identical buttons. Spec: CLAUDE.md "Buttons" and guide v2.
+   * render identical buttons. Spec: CLAUDE.md "Buttons" and guide v2.1.
    * Fixed 44px height keeps every button the same size, with or without icon.
+   * Label and padding match the owner's previous site: 12px Montserrat 500,
+   * no letter-spacing, 32px side padding.
    */
   .btn {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-2);
     height: 44px;
-    padding-inline: var(--spacing-4);
+    padding-inline: var(--spacing-5);
     border: 0;
     border-radius: var(--radius-pill);
-    font: 600 var(--text-ui) / 1 var(--font-sans);
-    letter-spacing: var(--tracking-ui);
+    font: 500 var(--text-ui) / 1 var(--font-sans);
     text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;

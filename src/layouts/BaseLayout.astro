@@ -4,6 +4,10 @@
  * Navbar and footer will be added here in their own steps.
  */
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import Navbar from '../components/Navbar';
+import { NAV_LINKS, RESUME_URL, SITE_NAME } from '../config/site';
+import logoImage from '../assets/logo.png';
 
 interface Props {
   /** Page name, e.g. "About me". Omit on the homepage. */
@@ -13,8 +17,6 @@ interface Props {
   noindex?: boolean;
 }
 
-const SITE_NAME = 'Karishma Hegde';
-
 const {
   title,
   description = '[PLACEHOLDER: meta description]',
@@ -22,6 +24,10 @@ const {
 } = Astro.props;
 
 const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
+
+// The monogram is shown at 48px; generate 1x-3x WebP versions instead of
+// shipping the full-size PNG.
+const logo = await getImage({ src: logoImage, width: 48, height: 48, densities: [1, 2, 3], format: 'webp' });
 ---
 
 <!doctype html>
@@ -43,7 +49,13 @@ const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
       Skip to content
     </a>
 
-    <!-- Navbar goes here (next step). -->
+    <Navbar
+      client:load
+      currentPath={Astro.url.pathname}
+      links={NAV_LINKS}
+      resumeUrl={RESUME_URL}
+      logo={{ src: logo.src, srcSet: logo.srcSet.attribute }}
+    />
 
     <main id="main">
       <slot />
