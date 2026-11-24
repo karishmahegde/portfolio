@@ -1,11 +1,12 @@
 ---
 /**
- * Shared page shell: <head>, skip link, main landmark.
- * Navbar and footer will be added here in their own steps.
+ * Shared page shell: <head>, skip link, navbar, main landmark and the
+ * custom cursor. The footer is added when the pages are built.
  */
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
 import Navbar from '../components/Navbar';
+import CustomCursor from '../components/CustomCursor';
 import { NAV_LINKS, RESUME_URL, SITE_NAME } from '../config/site';
 import logoImage from '../assets/logo.png';
 
@@ -25,9 +26,9 @@ const {
 
 const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
 
-// The monogram is shown at 48px; generate 1x-3x WebP versions instead of
+// The logo is shown at 56px; generate 1x-3x WebP versions instead of
 // shipping the full-size PNG.
-const logo = await getImage({ src: logoImage, width: 48, height: 48, densities: [1, 2, 3], format: 'webp' });
+const logo = await getImage({ src: logoImage, width: 56, height: 56, densities: [1, 2, 3], format: 'webp' });
 ---
 
 <!doctype html>
@@ -62,5 +63,8 @@ const logo = await getImage({ src: logoImage, width: 48, height: 48, densities: 
     </main>
 
     <!-- Footer goes here (built with the pages). -->
+
+    <!-- Custom cursor: mouse and trackpad only; touch devices skip its JS. -->
+    <CustomCursor client:media="(pointer: fine)" />
   </body>
 </html>

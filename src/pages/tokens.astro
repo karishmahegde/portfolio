@@ -9,7 +9,7 @@ import Section from '../components/Section.astro';
 import Button from '../components/Button.astro';
 
 const colours = [
-  { name: 'Charcoal', token: 'charcoal', hex: '#1E1D22', role: 'Primary background', cls: 'bg-charcoal text-offwhite' },
+  { name: 'Charcoal', token: 'charcoal', hex: '#161519', role: 'Primary background', cls: 'bg-charcoal text-offwhite' },
   { name: 'Steel blue', token: 'steel', hex: '#2A3646', role: 'Secondary background, footer', cls: 'bg-steel text-offwhite' },
   { name: 'Surface', token: 'surface', hex: '#2F3A4C', role: 'Raised panels (on charcoal only); secondary text on light', cls: 'bg-surface text-offwhite' },
   { name: 'Off-white', token: 'offwhite', hex: '#F0F1F4', role: 'Primary text, secondary button', cls: 'bg-offwhite text-charcoal' },
@@ -18,7 +18,8 @@ const colours = [
   { name: 'Deep blue', token: 'deep', hex: '#1B62C2', role: 'Primary button', cls: 'bg-deep text-offwhite' },
   { name: 'Electric blue', token: 'electric', hex: '#0F5AFF', role: 'Special button gradient', cls: 'bg-electric text-offwhite' },
   { name: 'Soft blue', token: 'soft', hex: '#9CC4F5', role: 'Links, labels, tags', cls: 'bg-soft text-charcoal' },
-  { name: 'Rose', token: 'rose', hex: '#733F48', role: 'Monogram, marquee, special button glow', cls: 'bg-rose text-offwhite' },
+  { name: 'Rose', token: 'rose', hex: '#733F48', role: 'Monogram, marquee strip, special button glow', cls: 'bg-rose text-offwhite' },
+  { name: 'Light rose', token: 'rose-light', hex: '#D58F9B', role: 'Hero greeting text', cls: 'bg-rose-light text-charcoal' },
 ];
 ---
 
@@ -58,8 +59,12 @@ const colours = [
     <h2 class="mb-6 font-serif text-section">Type</h2>
     <div class="grid gap-5">
       <div>
-        <p class="mb-2 font-mono text-label text-tone-muted">Hero · Newsreader Variable · clamp(2.7rem, 7.4vw, 6.2rem) / 0.98</p>
+        <p class="mb-2 font-mono text-label text-tone-muted">Hero · Newsreader Variable · clamp(2.75rem, 6vw, 3.75rem) / 1.05</p>
         <p class="font-serif text-hero">Sample display</p>
+      </div>
+      <div>
+        <p class="mb-2 font-mono text-label text-tone-muted">Accent · Newsreader Variable italic (real italic font) · soft blue</p>
+        <p class="font-serif text-section"><em>Sample italic</em> and <span class="text-soft">soft-blue accent</span></p>
       </div>
       <div>
         <p class="mb-2 font-mono text-label text-tone-muted">Section title · Newsreader Variable · clamp(2.4rem, 6vw, 4.4rem) / 1.04</p>

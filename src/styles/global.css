@@ -1,14 +1,17 @@
 /*
  * Global styles and design tokens.
- * Source of truth: brief/style-guide.html (v2). Values here are copied from it,
+ * Source of truth: brief/style-guide.html (v3). Values here are copied from it,
  * not reinterpreted. Change the guide first, then this file.
+ * Component-specific styles live with their component (for example the hero
+ * animation in components/home/Hero.astro).
  */
 
 /* Fonts are self-hosted through Fontsource (no Google Fonts request).
-   Newsreader uses the opsz build so the optical-size axis is available;
-   the default variable file only carries the weight axis. No italics are
-   used by the guide, so opsz-italic.css is not loaded. */
+   Newsreader uses the opsz builds so the optical-size axis is available
+   (the default variable file only carries the weight axis). The italic is
+   loaded so italic text uses the real italic, not a slanted roman. */
 @import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource-variable/newsreader/opsz-italic.css";
 @import "@fontsource/montserrat/400.css";
 @import "@fontsource/montserrat/500.css";
 @import "@fontsource/montserrat/600.css";
@@ -29,10 +32,10 @@
 @theme {
   /* Colour: guide section 01 */
   --color-*: initial;
-  --color-charcoal: #1e1d22; /* --color-bg-primary */
+  --color-charcoal: #161519; /* --color-bg-primary */
   --color-steel: #2a3646; /* --color-bg-secondary */
   /* Raised panels go on charcoal sections only: surface vs steel is 1.07:1,
-     so a panel on steel disappears (guide v2.1). */
+     so a panel on steel disappears. */
   --color-surface: #2f3a4c; /* --color-surface: raised panels, light-section secondary text */
   --color-offwhite: #f0f1f4; /* --color-text-primary */
   --color-muted: #a3a4ac; /* --color-text-muted */
@@ -41,8 +44,9 @@
   --color-electric: #0f5aff; /* --color-action-electric: special button gradient (off-white text 4.74:1) */
   --color-soft: #9cc4f5; /* --color-link */
   --color-rose: #733f48; /* --color-accent */
+  --color-rose-light: #d58f9b; /* --color-accent-text: hero greeting only (rose is 2.2:1 on charcoal, too dark for text; this is 7.1:1) */
   --color-hairline: rgb(255 255 255 / 0.08); /* --color-line */
-  --color-hairline-light: rgb(30 29 34 / 0.12); /* --color-line-light */
+  --color-hairline-light: rgb(22 21 25 / 0.12); /* --color-line-light */
 
   /* Type: guide section 02 */
   --font-*: initial;
@@ -52,8 +56,10 @@
 
   /* Named sizes from the guide. Tailwind's default text scale is kept for
      now; it is not reset because the guide doesn't define every size yet. */
-  --text-hero: clamp(2.7rem, 7.4vw, 6.2rem); /* v2.1: ~18% smaller than v2 */
-  --text-hero--line-height: 0.98;
+  /* Hero: 44px on phones up to 60px on desktop. The hero headline's width
+     cap (13em, Hero.astro) scales with this, so it stays 3 lines. */
+  --text-hero: clamp(2.75rem, 6vw, 3.75rem);
+  --text-hero--line-height: 1.05;
   --text-hero--letter-spacing: -0.025em;
   --text-section: clamp(2.4rem, 6vw, 4.4rem);
   --text-section--line-height: 1.04;
@@ -62,10 +68,10 @@
   --text-body--line-height: 1.65;
   --text-label: 13px; /* DM Mono labels, dates, tags, strips */
   --text-label--line-height: 1.4;
-  --text-ui: 12px; /* button labels (matched to the owner's previous site) */
+  --text-ui: 12px; /* button labels and nav links */
 
   --tracking-display: -0.025em;
-  --tracking-ui: 0.06em; /* uppercase button and nav labels */
+  --tracking-ui: 0.06em; /* letter-spaced capitals: hero greeting, mobile menu links */
 
   /* Spacing: guide section 03. Eight steps and no other values. */
   --spacing-*: initial;
@@ -89,7 +95,7 @@
 
   /* Layout */
   --container-*: initial;
-  --container-content: 1120px; /* --container */
+  --container-content: 1280px; /* --container: shared by the navbar and every section */
 
   /* Breakpoints (mobile first: unprefixed classes are the mobile layout) */
   --breakpoint-*: initial;
@@ -119,13 +125,12 @@
 @layer base {
   html {
     color-scheme: dark;
-    /* Navbar height, matched to the owner's previous site: 28px padding
-       around a 48px monogram. */
+    /* Navbar height, matched to the owner's previous site; the 56px logo
+       sits centred with 24px above and below. */
     --nav-height: 104px;
     /* In-page links (#main, #section) land below the fixed navbar. */
     scroll-padding-top: calc(var(--nav-height) + var(--spacing-3));
   }
-
 
   body {
     background-color: var(--color-charcoal);
@@ -172,26 +177,29 @@
 }
 
 /*
- * Content container: 1120px max, 22px side padding on mobile, 32px from 720px.
- * 22px is the guide's mobile side padding; it is the one value outside the
- * spacing scale, and the guide sets it explicitly.
+ * Content container, shared by the navbar and every section so page content
+ * starts directly under the logo: 1280px max, 24px side padding on phones
+ * (below 720px), 28px from 720px. 28px sits outside the spacing scale; it
+ * matches the owner's previous site.
  */
 @utility wrap {
   max-width: var(--container-content);
   margin-inline: auto;
-  padding-inline: 22px;
+  padding-inline: var(--spacing-4);
   @variant tablet {
-    padding-inline: var(--spacing-5);
+    padding-inline: 28px;
   }
 }
 
-/* Corner glow: bright blue 18% in the top-right with a fine grain overlay.
-   Copied from the guide. Charcoal sections only (hero and Works). */
+/* Corner glow: bright blue at 18% in the top-right, with a grain overlay.
+   Charcoal sections only (hero and Works). The ellipse is 80vw x 95vh, so
+   it scales with the screen and reaches well into the hero. The grain is
+   full-strength fractal noise (base frequency 0.8) blended in overlay. */
 @utility corner-glow {
   background-color: var(--color-charcoal);
   background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
-    radial-gradient(640px 340px at 86% 0, rgb(62 155 255 / 0.18), transparent 72%);
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    radial-gradient(80vw 95vh at 86% 0, rgb(62 155 255 / 0.18), transparent 72%);
   background-size: 160px 160px, auto;
   background-blend-mode: overlay, normal;
 }
@@ -205,19 +213,38 @@ main > section:first-child {
   padding-top: calc(var(--nav-height) + var(--spacing-5));
 }
 
+/* Full-screen hero: at least the viewport's height (svh, so mobile browser
+   bars don't make it jump), with its content centred vertically in the
+   space under the navbar. The bottom padding matches the 32px gap under
+   the bar, so the content sits visually in the middle. Unlayered for the
+   same reason as the rule above. */
+.hero-fill {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: var(--spacing-5);
+}
+/* In a flex column, .wrap's auto side margins would shrink it to its
+   content and centre it; keep it the full container width instead. */
+.hero-fill > .wrap {
+  width: 100%;
+}
+
 /* Navbar frosted background: a light charcoal tint (10%, matched to the
-   owner's previous site), so the bar reads as see-through over dark sections. The 6px blur is set in Navbar.tsx:
-   backdrop-blur-[6px] for the standard property, plus an inline
-   WebkitBackdropFilter for Safari < 18, because the CSS optimiser strips
-   the -webkit- version from stylesheets. */
+   owner's previous site), so the bar reads as see-through over dark
+   sections. The 6px blur is set in Navbar.tsx: backdrop-blur-[6px] for
+   the standard property, plus an inline WebkitBackdropFilter for
+   Safari < 18, because the CSS optimiser strips the -webkit- version from
+   stylesheets. */
 @utility nav-frosted {
-  background-color: rgb(30 29 34 / 0.1);
+  background-color: rgb(22 21 25 / 0.1);
 }
 
 /* Stronger charcoal tint (80%) for the mobile menu panel and the bar while
    the menu is open: the panel's large off-white links sit over page text. */
 @utility nav-frosted-strong {
-  background-color: rgb(30 29 34 / 0.8);
+  background-color: rgb(22 21 25 / 0.8);
 }
 
 /* Light bar: over light sections the navbar switches to frosted off-white
@@ -235,19 +262,6 @@ main > section:first-child {
   background-image: linear-gradient(to bottom, rgb(240 241 244 / 0.7), transparent);
 }
 
-/* Navbar container, matched to the owner's previous site: 1280px max with
-   28px side padding. Wider than .wrap (1120px), so the monogram and Resume
-   sit further out than the page content. On phones (below 720px) it uses
-   22px instead, so the monogram lines up with the page text. Navbar only. */
-@utility nav-container {
-  max-width: 1280px;
-  margin-inline: auto;
-  padding-inline: 22px;
-  @variant tablet {
-    padding-inline: 28px;
-  }
-}
-
 /* Visually hidden until focused (used by the skip link). */
 @utility sr-only-focusable {
   &:not(:focus) {
@@ -263,7 +277,7 @@ main > section:first-child {
 @layer components {
   /*
    * Buttons. One shared class so Astro pages and React islands (the navbar)
-   * render identical buttons. Spec: CLAUDE.md "Buttons" and guide v2.1.
+   * render identical buttons. Spec: CLAUDE.md "Buttons" and the guide.
    * Fixed 44px height keeps every button the same size, with or without icon.
    * Label and padding match the owner's previous site: 12px Montserrat 500,
    * no letter-spacing, 32px side padding.
@@ -369,4 +383,49 @@ main > section:first-child {
   .tone-light .text-link:hover {
     color: var(--color-charcoal);
   }
+
+  /* Text link set like a button label (12px, 500, uppercase, no
+     letter-spacing), for links that sit next to a button, such as the
+     hero's "About" beside "My work". */
+  .text-link-ui {
+    font-size: var(--text-ui);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  /* Colours flipped from .text-link on dark sections: off-white at rest,
+     soft blue on hover. Light sections keep the .tone-light text-link
+     colours. */
+  .tone-dark .text-link-ui {
+    color: var(--color-offwhite);
+  }
+  .tone-dark .text-link-ui:hover {
+    color: var(--color-soft);
+  }
+}
+
+/*
+ * Custom cursor (CustomCursor.tsx). Remove this block with the component.
+ * The native cursor is hidden only once the component has mounted (it adds
+ * .has-custom-cursor to <html>); text inputs keep the native text cursor.
+ */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+html.has-custom-cursor
+  :is(
+    input:not([type="button"], [type="submit"], [type="reset"], [type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"], [type="image"]),
+    textarea,
+    [contenteditable=""],
+    [contenteditable="true"]
+  ) {
+  cursor: auto !important;
+}
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  mix-blend-mode: difference;
 }

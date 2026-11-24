@@ -1,11 +1,10 @@
 ---
-// Stub. Homepage content (hero, marquee, Profile, ...) arrives in Stage 2.
+// Homepage. Sections are added one at a time (Stage 2). Done: hero.
+// Next: marquee, Profile, What I work on, index rows, contact.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Section from '../components/Section.astro';
+import Hero from '../components/home/Hero.astro';
 ---
 
 <BaseLayout>
-  <Section glow>
-    <h1 class="font-serif text-hero">Home</h1>
-  </Section>
+  <Hero />
 </BaseLayout>
