@@ -402,3 +402,30 @@ main > section:first-child {
     color: var(--color-soft);
   }
 }
+
+/*
+ * Custom cursor (CustomCursor.tsx). Remove this block with the component.
+ * The native cursor is hidden only once the component has mounted (it adds
+ * .has-custom-cursor to <html>); text inputs keep the native text cursor.
+ */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+html.has-custom-cursor
+  :is(
+    input:not([type="button"], [type="submit"], [type="reset"], [type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"], [type="image"]),
+    textarea,
+    [contenteditable=""],
+    [contenteditable="true"]
+  ) {
+  cursor: auto !important;
+}
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}

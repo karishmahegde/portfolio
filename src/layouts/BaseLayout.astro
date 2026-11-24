@@ -1,11 +1,12 @@
 ---
 /**
- * Shared page shell: <head>, skip link, main landmark.
- * Navbar and footer will be added here in their own steps.
+ * Shared page shell: <head>, skip link, navbar, main landmark and the
+ * custom cursor. The footer is added when the pages are built.
  */
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
 import Navbar from '../components/Navbar';
+import CustomCursor from '../components/CustomCursor';
 import { NAV_LINKS, RESUME_URL, SITE_NAME } from '../config/site';
 import logoImage from '../assets/logo.png';
 
@@ -62,5 +63,8 @@ const logo = await getImage({ src: logoImage, width: 56, height: 56, densities: 
     </main>
 
     <!-- Footer goes here (built with the pages). -->
+
+    <!-- Custom cursor: mouse and trackpad only; touch devices skip its JS. -->
+    <CustomCursor client:media="(pointer: fine)" />
   </body>
 </html>
