@@ -1,11 +1,11 @@
 /**
  * Site navbar (React island). Spec: CLAUDE.md "Navbar".
  *
- * Layout: monogram left, page links centre, Resume (special button) right.
+ * Layout: logo left, page links centre, Resume (special button) right.
  * Sizes match the owner's previous site, as navbar exceptions to the
  * guide's scale: 12px Montserrat 500 links with 40px gaps, a 104px bar, a
- * 48px monogram, a wider container (1280px max, 28px side padding at every
- * width) so the monogram and Resume sit further out than the page content.
+ * 56px logo. Uses the site's .wrap container (1280px max, 28px side
+ * padding, 24px on phones), so page content lines up under the logo.
  * Below 1024px the links and Resume move into a frosted panel opened by a
  * hamburger button.
  *
@@ -23,7 +23,7 @@ interface Props {
   currentPath: string;
   links: NavLink[];
   resumeUrl: string;
-  /** Optimised monogram from astro:assets (48px, 1x to 3x). */
+  /** Optimised logo from astro:assets (56px, 1x to 3x). */
   logo: { src: string; srcSet: string };
 }
 
@@ -187,9 +187,9 @@ export default function Navbar({ currentPath, links, resumeUrl, logo }: Props) {
         ].join(' ')}
       />
 
-      <nav aria-label="Main" className="nav-container flex h-(--nav-height) items-center justify-between gap-4">
+      <nav aria-label="Main" className="wrap flex h-(--nav-height) items-center justify-between gap-4">
         <a href="/" aria-label="Karishma Hegde, home" className="shrink-0 rounded-full">
-          <img src={logo.src} srcSet={logo.srcSet} width={48} height={48} alt="" className="block size-[48px]" />
+          <img src={logo.src} srcSet={logo.srcSet} width={56} height={56} alt="" className="block size-[56px]" />
         </a>
 
         <ul className="hidden items-center gap-[40px] nav:flex">
@@ -223,7 +223,7 @@ export default function Navbar({ currentPath, links, resumeUrl, logo }: Props) {
           aria-label={open ? 'Close menu' : 'Open menu'}
           onClick={() => setOpen((value) => !value)}
         >
-          {/* Menu icon, sized to balance the 48px monogram (owner's request;
+          {/* Menu icon, sized to balance the 56px logo (owner's request;
               larger than the guide's 24px nav icons): three 21px bars, 1.75px
               thick, 7px apart. Opening morphs it into a cross with CSS only:
               the outer bars slide to the middle and rotate 45deg, the middle
@@ -251,35 +251,42 @@ export default function Navbar({ currentPath, links, resumeUrl, logo }: Props) {
         </button>
       </nav>
 
-      {/* Mobile menu panel. Rendered only while open, below 1024px. */}
-      {open && (
-        <div
-          id={menuId}
-          style={SAFARI_BLUR}
-          className="nav-frosted nav-frosted-strong backdrop-blur-[6px] absolute inset-x-0 top-full max-h-[calc(100dvh-var(--nav-height))] overflow-y-auto border-b border-hairline nav:hidden"
-        >
-          <div className="nav-container py-5">
-            <ul className="flex flex-col gap-1">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className={linkClass(link.href, 'menu')}
-                    aria-current={isCurrent(link.href, currentPath) ? 'page' : undefined}
-                    onClick={() => setOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a href={resumeUrl} className="btn btn-special mt-5" onClick={() => setOpen(false)}>
-              Resume
-              <DownloadIcon />
-            </a>
-          </div>
+      {/* Mobile menu panel (below 1024px). Always in the page so CSS can
+          animate both opening and closing: it fades in and slides down 8px
+          over 250ms, and reverses on close. While closed it is invisible and
+          inert, so its links can't be focused or read. Reduced motion: the
+          global rule makes it switch instantly. */}
+      <div
+        id={menuId}
+        inert={!open}
+        style={SAFARI_BLUR}
+        className={[
+          'nav-frosted nav-frosted-strong backdrop-blur-[6px] absolute inset-x-0 top-full max-h-[calc(100dvh-var(--nav-height))] overflow-y-auto border-b border-hairline nav:hidden',
+          'transition-[opacity,translate,visibility] duration-250 ease-in-out',
+          open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0',
+        ].join(' ')}
+      >
+        <div className="wrap py-5">
+          <ul className="flex flex-col gap-1">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className={linkClass(link.href, 'menu')}
+                  aria-current={isCurrent(link.href, currentPath) ? 'page' : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href={resumeUrl} className="btn btn-special mt-5" onClick={() => setOpen(false)}>
+            Resume
+            <DownloadIcon />
+          </a>
         </div>
-      )}
+      </div>
     </header>
   );
 }

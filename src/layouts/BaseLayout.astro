@@ -25,9 +25,9 @@ const {
 
 const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
 
-// The monogram is shown at 48px; generate 1x-3x WebP versions instead of
+// The logo is shown at 56px; generate 1x-3x WebP versions instead of
 // shipping the full-size PNG.
-const logo = await getImage({ src: logoImage, width: 48, height: 48, densities: [1, 2, 3], format: 'webp' });
+const logo = await getImage({ src: logoImage, width: 56, height: 56, densities: [1, 2, 3], format: 'webp' });
 ---
 
 <!doctype html>

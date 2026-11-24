@@ -123,8 +123,8 @@
 @layer base {
   html {
     color-scheme: dark;
-    /* Navbar height, matched to the owner's previous site: 28px padding
-       around a 48px monogram. */
+    /* Navbar height, matched to the owner's previous site; the 56px logo
+       sits centred with 24px above and below. */
     --nav-height: 104px;
     /* In-page links (#main, #section) land below the fixed navbar. */
     scroll-padding-top: calc(var(--nav-height) + var(--spacing-3));
@@ -212,18 +212,19 @@ main > section:first-child {
 }
 
 /* Navbar frosted background: a light charcoal tint (10%, matched to the
-   owner's previous site), so the bar reads as see-through over dark sections. The 6px blur is set in Navbar.tsx:
-   backdrop-blur-[6px] for the standard property, plus an inline
-   WebkitBackdropFilter for Safari < 18, because the CSS optimiser strips
-   the -webkit- version from stylesheets. */
+   owner's previous site), so the bar reads as see-through over dark
+   sections. The 6px blur is set in Navbar.tsx: backdrop-blur-[6px] for
+   the standard property, plus an inline WebkitBackdropFilter for
+   Safari < 18, because the CSS optimiser strips the -webkit- version from
+   stylesheets. */
 @utility nav-frosted {
-  background-color: rgb(30 29 34 / 0.1);
+  background-color: rgb(22 21 25 / 0.1);
 }
 
 /* Stronger charcoal tint (80%) for the mobile menu panel and the bar while
    the menu is open: the panel's large off-white links sit over page text. */
 @utility nav-frosted-strong {
-  background-color: rgb(30 29 34 / 0.8);
+  background-color: rgb(22 21 25 / 0.8);
 }
 
 /* Light bar: over light sections the navbar switches to frosted off-white
@@ -239,19 +240,6 @@ main > section:first-child {
    text on off-white reads as a grey smudge). */
 @utility nav-veil-light {
   background-image: linear-gradient(to bottom, rgb(240 241 244 / 0.7), transparent);
-}
-
-/* Navbar container, matched to the owner's previous site: 1280px max with
-   28px side padding. Wider than .wrap (1120px), so the monogram and Resume
-   sit further out than the page content. On phones (below 720px) it uses
-   22px instead, so the monogram lines up with the page text. Navbar only. */
-@utility nav-container {
-  max-width: 1280px;
-  margin-inline: auto;
-  padding-inline: 22px;
-  @variant tablet {
-    padding-inline: 28px;
-  }
 }
 
 /* Visually hidden until focused (used by the skip link). */
