@@ -13,6 +13,10 @@
  *   and the native text cursor comes back (CSS in global.css).
  * - Off-white with mix-blend-mode: difference, so it shows on dark and
  *   light sections alike (light on charcoal, dark on off-white).
+ * - The ring's stroke is off-white at 50% (owner's choice, 2026-11-24) so it
+ *   reads as a quieter mid-grey on both tones. It stays 1px: thinner lines
+ *   blur or vanish on 1x screens and change weight when the ring scales.
+ *   The dot stays at full strength so the pointer is easy to find.
  * - The native cursor is hidden only after mount (a class on <html>), and
  *   shown again if this unmounts.
  * - Hidden until the first mouse move and when the pointer leaves the window.
@@ -79,7 +83,7 @@ export default function CustomCursor() {
     <LazyMotion features={domAnimation} strict>
       <m.div
         aria-hidden="true"
-        className="custom-cursor size-[32px] rounded-full border border-offwhite"
+        className="custom-cursor size-[32px] rounded-full border border-offwhite/50"
         style={{
           x: reduce ? x : ringX,
           y: reduce ? y : ringY,
